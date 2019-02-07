@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 	android:orientation="vertical"
@@ -7,6 +7,9 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
+		android:id="@+id/sp_toolbar"
+		android:layout_marginBottom="10sp"
+		android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -20,17 +23,39 @@
 
     </android.support.design.widget.AppBarLayout>
 
+	<LinearLayout
+		android:id="@+id/ll_confirmar_pedido"
+		android:layout_alignParentBottom="true"
+		android:padding="20dp"
+		android:background="@color/colorPrimary"
+		android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+		<Button
+			android:text="Comprar > R$2.991.00"
+			android:textSize="16sp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+
+	</LinearLayout>
+
 	<ProgressBar
+		android:layout_below="@+id/sp_toolbar"
+		android:layout_above="@+id/ll_confirmar_pedido"
 		android:id="@+id/progressBar"
 		style="?android:attr/progressBarStyleLarge"
 		android:layout_width="match_parent"
 		android:layout_height="50dp"/>
 
 	 <android.support.v7.widget.RecyclerView
+		android:layout_below="@+id/sp_toolbar"
+		android:layout_above="@+id/ll_confirmar_pedido"
+		android:layout_marginTop="10dp"
+		android:layout_alignParentTop="true"
         android:id="@+id/listaReciclavelProdutos"
 		android:visibility="gone"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

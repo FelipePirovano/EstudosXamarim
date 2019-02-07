@@ -94,4 +94,3 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Tr
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Web.Services.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.Linq.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.pdb
-C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAssemblyReference.cache

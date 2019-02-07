@@ -20,5 +20,6 @@ namespace MeusPedidos.Model
         public string urlPhoto { get; set; }
         public int preco { get; set; }
         public int categoria { get; set; }
+        public int quantidade { get; set; }
     }
 }
