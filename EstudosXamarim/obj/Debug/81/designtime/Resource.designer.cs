@@ -2741,11 +2741,11 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C008B
 			public const int transition_transform = 2131493003;
 			
-			// aapt resource value: 0x7F010007
-			public const int tv_item_descricao = 2130771975;
-			
 			// aapt resource value: 0x7F010006
 			public const int tv_item_nome = 2130771974;
+			
+			// aapt resource value: 0x7F010007
+			public const int tv_item_price = 2130771975;
 			
 			// aapt resource value: 0x7F0C008C
 			public const int uniform = 2131493004;
@@ -3033,11 +3033,14 @@ namespace EstudosXamarim
 		public partial class Mipmap
 		{
 			
+			// aapt resource value: 0x7F040004
+			public const int ic_action_arrow_downward = 2130968580;
+			
 			// aapt resource value: 0x7F040002
 			public const int ic_launcher = 2130968578;
 			
-			// aapt resource value: 0x7F040004
-			public const int ic_launcher_foreground = 2130968580;
+			// aapt resource value: 0x7F040005
+			public const int ic_launcher_foreground = 2130968581;
 			
 			// aapt resource value: 0x7F040003
 			public const int ic_launcher_round = 2130968579;

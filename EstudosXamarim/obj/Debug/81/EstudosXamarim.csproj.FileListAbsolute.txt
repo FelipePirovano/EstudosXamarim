@@ -40,15 +40,13 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\uploadflags.txt
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\itemlistaproduto.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Mono.Android.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\mscorlib.pdb
+C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Newtonsoft.Json.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Core.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Xml.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Net.Http.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Runtime.Serialization.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.ServiceModel.Internals.pdb
-C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Mono.Security.pdb
-C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAssemblyReference.cache
-C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Newtonsoft.Json.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Data.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Numerics.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Transactions.pdb
@@ -57,6 +55,7 @@ C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.IO.Compression.FileS
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.ComponentModel.Composition.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Web.Services.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Xml.Linq.pdb
+C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Mono.Security.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\EstudosXamarim.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\Mono.Android.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\mscorlib.pdb
@@ -95,3 +94,4 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Tr
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Web.Services.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.Linq.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.pdb
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAssemblyReference.cache

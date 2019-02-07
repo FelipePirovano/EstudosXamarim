@@ -41,7 +41,7 @@ namespace MeusPedidos.Adapter
             var holder = viewHolder as Adapter1ViewHolder;
 
             holder.nome.Text = items[position].nome;
-            holder.descricao.Text = items[position].descricao;
+            holder.price.Text = "R$"+ items[position].preco.ToString();
             //Android.Net.Uri url = Android.Net.Uri.Parse(items[position].urlPhoto);
             //holder.image.SetImageURI(url);
 
@@ -57,16 +57,16 @@ namespace MeusPedidos.Adapter
     public class Adapter1ViewHolder : RecyclerView.ViewHolder
     {
         public TextView nome { get; set; }
-        public TextView descricao { get; set; }
-        //public ImageView image { get; set; }
+        public TextView price { get; set; }
+        public ImageView image { get; set; }
 
         public Adapter1ViewHolder(View itemView, Action<Adapter1ClickEventArgs> clickListener,
                             Action<Adapter1ClickEventArgs> longClickListener) : base(itemView)
         {
           
             nome = itemView.FindViewById<TextView>(Resource.Id.tv_item_nome);
-            descricao = itemView.FindViewById<TextView>(Resource.Id.tv_item_descricao);
-          //  image = itemView.FindViewById<ImageView>(Resource.Id.iv_item_image);
+            price = itemView.FindViewById<TextView>(Resource.Id.tv_item_price);
+            image = itemView.FindViewById<ImageView>(Resource.Id.iv_item_image);
 
             itemView.Click += (sender, e) => clickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
