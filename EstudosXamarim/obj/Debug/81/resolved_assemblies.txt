@@ -2,6 +2,7 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\EstudosXa
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\Java.Interop.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\Mono.Android.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\mscorlib.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\Newtonsoft.Json.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Core.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.dll
@@ -24,4 +25,13 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\Xamarin.A
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Net.Http.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Runtime.Serialization.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.ServiceModel.Internals.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\netstandard.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Data.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Numerics.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Transactions.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.IO.Compression.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.IO.Compression.FileSystem.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.ComponentModel.Composition.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Web.Services.dll
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.Linq.dll
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\Mono.Security.dll

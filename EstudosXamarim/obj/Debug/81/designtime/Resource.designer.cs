@@ -2363,8 +2363,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F010006
-			public const int action_settings = 2130771974;
+			// aapt resource value: 0x7F010007
+			public const int action_settings = 2130771975;
 			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
@@ -2501,8 +2501,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C000F
 			public const int line3 = 2131492879;
 			
-			// aapt resource value: 0x7F010003
-			public const int listaReciclavelProdutos = 2130771971;
+			// aapt resource value: 0x7F010004
+			public const int listaReciclavelProdutos = 2130771972;
 			
 			// aapt resource value: 0x7F0C0040
 			public const int listMode = 2131492928;
@@ -2554,6 +2554,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F0C0050
 			public const int pin = 2131492944;
+			
+			// aapt resource value: 0x7F010003
+			public const int progressBar = 2130771971;
 			
 			// aapt resource value: 0x7F0C0051
 			public const int progress_circular = 2131492945;
@@ -2735,11 +2738,11 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C008B
 			public const int transition_transform = 2131493003;
 			
-			// aapt resource value: 0x7F010005
-			public const int tv_item_descricao = 2130771973;
+			// aapt resource value: 0x7F010006
+			public const int tv_item_descricao = 2130771974;
 			
-			// aapt resource value: 0x7F010004
-			public const int tv_item_nome = 2130771972;
+			// aapt resource value: 0x7F010005
+			public const int tv_item_nome = 2130771973;
 			
 			// aapt resource value: 0x7F0C008C
 			public const int uniform = 2131493004;
