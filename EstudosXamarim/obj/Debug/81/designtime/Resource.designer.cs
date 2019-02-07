@@ -2363,8 +2363,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F010007
-			public const int action_settings = 2130771975;
+			// aapt resource value: 0x7F010008
+			public const int action_settings = 2130771976;
 			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
@@ -2488,6 +2488,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F0C003B
 			public const int item_touch_helper_previous_elevation = 2131492923;
+			
+			// aapt resource value: 0x7F010005
+			public const int iv_item_image = 2130771973;
 			
 			// aapt resource value: 0x7F0C003C
 			public const int largeLabel = 2131492924;
@@ -2738,11 +2741,11 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C008B
 			public const int transition_transform = 2131493003;
 			
-			// aapt resource value: 0x7F010006
-			public const int tv_item_descricao = 2130771974;
+			// aapt resource value: 0x7F010007
+			public const int tv_item_descricao = 2130771975;
 			
-			// aapt resource value: 0x7F010005
-			public const int tv_item_nome = 2130771973;
+			// aapt resource value: 0x7F010006
+			public const int tv_item_nome = 2130771974;
 			
 			// aapt resource value: 0x7F0C008C
 			public const int uniform = 2131493004;

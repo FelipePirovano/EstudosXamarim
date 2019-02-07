@@ -73,17 +73,7 @@ namespace MeusPedidos
                 progressBar.Visibility = ViewStates.Gone;
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
 
-            }
-
-            /*listaProdutos = new List<Produto>();
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });
-            listaProdutos.Add(new Produto() { nome = "teste", descricao = "teste teste teste teste" });*/
-            
+            }      
         }
 
         public void consumirDadosListarProdutos()

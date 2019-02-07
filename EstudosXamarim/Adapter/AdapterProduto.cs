@@ -6,6 +6,9 @@ using Android.Support.V7.Widget;
 using MeusPedidos.Model;
 using System.Collections.Generic;
 using EstudosXamarim;
+using Android.Graphics;
+using Java.Net;
+using Java.IO;
 
 namespace MeusPedidos.Adapter
 {
@@ -39,6 +42,8 @@ namespace MeusPedidos.Adapter
 
             holder.nome.Text = items[position].nome;
             holder.descricao.Text = items[position].descricao;
+            //Android.Net.Uri url = Android.Net.Uri.Parse(items[position].urlPhoto);
+            //holder.image.SetImageURI(url);
 
         }
 
@@ -53,6 +58,7 @@ namespace MeusPedidos.Adapter
     {
         public TextView nome { get; set; }
         public TextView descricao { get; set; }
+        //public ImageView image { get; set; }
 
         public Adapter1ViewHolder(View itemView, Action<Adapter1ClickEventArgs> clickListener,
                             Action<Adapter1ClickEventArgs> longClickListener) : base(itemView)
@@ -60,6 +66,7 @@ namespace MeusPedidos.Adapter
           
             nome = itemView.FindViewById<TextView>(Resource.Id.tv_item_nome);
             descricao = itemView.FindViewById<TextView>(Resource.Id.tv_item_descricao);
+          //  image = itemView.FindViewById<ImageView>(Resource.Id.iv_item_image);
 
             itemView.Click += (sender, e) => clickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
