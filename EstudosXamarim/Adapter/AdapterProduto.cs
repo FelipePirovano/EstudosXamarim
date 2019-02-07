@@ -5,6 +5,7 @@ using Android.Widget;
 using Android.Support.V7.Widget;
 using MeusPedidos.Model;
 using System.Collections.Generic;
+using EstudosXamarim;
 
 namespace MeusPedidos.Adapter
 {
@@ -23,8 +24,9 @@ namespace MeusPedidos.Adapter
         {
 
             View itemView = null;
-           //var id = Resource.Layout.itemListaProduto;
-           // itemView = LayoutInflater.From(parent.Context).Inflate(id, parent, false);
+            //var id = Resource.Layout.itemListaProduto ;
+            var id = Resource.Layout.itemListaProduto;
+            itemView = LayoutInflater.From(parent.Context).Inflate(id, parent, false);
             var vh = new Adapter1ViewHolder(itemView, OnClick, OnLongClick);
             return vh;
         }
@@ -55,8 +57,9 @@ namespace MeusPedidos.Adapter
         public Adapter1ViewHolder(View itemView, Action<Adapter1ClickEventArgs> clickListener,
                             Action<Adapter1ClickEventArgs> longClickListener) : base(itemView)
         {
-            //nome = itemView.FindViewById<TextView>(Resource.Id.tv_item_nome);
-            //descricao = itemView.FindViewById<TextView>(Resource.Id.tv_item_descricao);
+          
+            nome = itemView.FindViewById<TextView>(Resource.Id.tv_item_nome);
+            descricao = itemView.FindViewById<TextView>(Resource.Id.tv_item_descricao);
 
             itemView.Click += (sender, e) => clickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
             itemView.LongClick += (sender, e) => longClickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });

@@ -2363,8 +2363,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F010003
-			public const int action_settings = 2130771971;
+			// aapt resource value: 0x7F010006
+			public const int action_settings = 2130771974;
 			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
@@ -2500,6 +2500,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F0C000F
 			public const int line3 = 2131492879;
+			
+			// aapt resource value: 0x7F010003
+			public const int listaReciclavelProdutos = 2130771971;
 			
 			// aapt resource value: 0x7F0C0040
 			public const int listMode = 2131492928;
@@ -2732,6 +2735,12 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C008B
 			public const int transition_transform = 2131493003;
 			
+			// aapt resource value: 0x7F010005
+			public const int tv_item_descricao = 2130771973;
+			
+			// aapt resource value: 0x7F010004
+			public const int tv_item_nome = 2130771972;
+			
 			// aapt resource value: 0x7F0C008C
 			public const int uniform = 2131493004;
 			
@@ -2925,6 +2934,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F0F0028
 			public const int design_text_input_password_icon = 2131689512;
+			
+			// aapt resource value: 0x7F020003
+			public const int itemListaProduto = 2130837507;
 			
 			// aapt resource value: 0x7F0F0001
 			public const int notification_action = 2131689473;
@@ -3159,6 +3171,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F150001
 			public const int status_bar_notification_info_overflow = 2132082689;
+			
+			// aapt resource value: 0x7F070004
+			public const int titulo_toolbar = 2131165188;
 			
 			static String()
 			{

@@ -37,6 +37,7 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\mipmap-xxxhdpi\ic_la
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\R.cs.flag
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\R.txt
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\uploadflags.txt
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\itemlistaproduto.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Mono.Android.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\mscorlib.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Core.pdb
@@ -46,7 +47,6 @@ C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Net.Http.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.Runtime.Serialization.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\System.ServiceModel.Internals.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\bin\Debug\Mono.Security.pdb
-C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAssemblyReference.cache
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\EstudosXamarim.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\Mono.Android.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\linksrc\mscorlib.pdb
