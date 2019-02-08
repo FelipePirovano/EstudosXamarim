@@ -58,10 +58,25 @@ namespace MeusPedidos.Adapter
         public void OnClick(View v)
         {
             if (v.Id == Resource.Id.bt_adicionar_produto) {
-                System.Console.Out.WriteLine("linha do produto"+v.Tag);
-            }else if(v.Id == Resource.Id.bt_remover_produto)
+               
+
+                int posicao = (int)v.Tag;
+                items[posicao].quantidade ++ ;
+
+                System.Console.Out.WriteLine("quantidade de itens:"+items[posicao].quantidade);
+
+            }
+            else if(v.Id == Resource.Id.bt_remover_produto)
             {
-                System.Console.Out.WriteLine("linha do produto" + v.Tag);
+                int posicao = (int)v.Tag;
+
+                if (items[posicao].quantidade == 0) {
+                    return;
+                }
+                
+                items[posicao].quantidade--;
+
+                System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
             }
         }
     }
