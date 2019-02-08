@@ -6,16 +6,15 @@ using Android.Support.V7.Widget;
 using MeusPedidos.Model;
 using System.Collections.Generic;
 using EstudosXamarim;
-using Android.Graphics;
-using Java.Net;
-using Java.IO;
+using Android.Content;
 
 namespace MeusPedidos.Adapter
 {
     class ProdutoAdapter : RecyclerView.Adapter, View.IOnClickListener
     {
-   
         List<Produto> items;
+        Context context;
+
 
         public ProdutoAdapter(List<Produto> data)
         {
@@ -26,9 +25,9 @@ namespace MeusPedidos.Adapter
         {
 
             View itemView = null;
-            //var id = Resource.Layout.itemListaProduto ;
             var id = Resource.Layout.itemListaProduto;
             itemView = LayoutInflater.From(parent.Context).Inflate(id, parent, false);
+            context = parent.Context;
             var vh = new Adapter1ViewHolder(itemView);
             return vh;
         }
@@ -40,11 +39,9 @@ namespace MeusPedidos.Adapter
             var holder = viewHolder as Adapter1ViewHolder;
 
             holder.nome.Text = items[position].nome;
-            holder.price.Text = "R$"+ items[position].preco.ToString();
+            holder.price.Text = "R$"+ items[position].preco;
             holder.quantidade.Text = items[position].quantidade + " UN";
-            //Android.Net.Uri url = Android.Net.Uri.Parse(items[position].urlPhoto);
-            //holder.image.SetImageURI(url);
-
+       
             holder.botaoAdicionar.SetOnClickListener(this);
             holder.botaoAdicionar.Tag = position;
 
@@ -64,6 +61,8 @@ namespace MeusPedidos.Adapter
                 items[posicao].quantidade ++ ;
 
                 NotifyDataSetChanged();
+                
+                ((MainActivity)context).verificarProdutosSelecionados();
 
                 System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
 
@@ -79,6 +78,8 @@ namespace MeusPedidos.Adapter
                 items[posicao].quantidade-- ;
 
                 NotifyDataSetChanged();
+
+                ((MainActivity)context).verificarProdutosSelecionados();
 
                 System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
             }
@@ -103,7 +104,6 @@ namespace MeusPedidos.Adapter
             botaoAdicionar = itemView.FindViewById<Button>(Resource.Id.bt_adicionar_produto);
             botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);
             quantidade = itemView.FindViewById<TextView>(Resource.Id.tv_quantidade_produtos);
-
 
         }
     }

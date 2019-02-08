@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Views;
+using Android.Widget;
 using EstudosXamarim;
 using MeusPedidos.Adapter;
 using MeusPedidos.Model;
@@ -24,7 +25,10 @@ namespace MeusPedidos
         RecyclerView.LayoutManager layoutManager;
         ProdutoAdapter produtoAdapter;
         List<Produto> listaProdutos;
+        List<Produto> listaProdutosSelecionados;
         Android.Widget.ProgressBar progressBar;
+        Button botaoConfirmarPedido;
+        int valorTotalPedidos;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,7 +42,10 @@ namespace MeusPedidos
             listaReciclavelProdutos = FindViewById<RecyclerView>(Resource.Id.listaReciclavelProdutos);
             progressBar = FindViewById<Android.Widget.ProgressBar>(Resource.Id.progressBar);
 
+            botaoConfirmarPedido = FindViewById<Button>(Resource.Id.bt_confirmar_pedido);
+
             consumirDadosListarProdutos();
+            atualizarTextoBotaoConfirmar();
 
         }
 
@@ -75,7 +82,45 @@ namespace MeusPedidos
 
             }      
         }
-        
+
+        public void verificarProdutosSelecionados()
+        {
+         
+            /*for (int i = 0; i < listaProdutos.Count; i++)
+            {
+
+                Produto produto = listaProdutos[i];
+
+                if (produto.quantidade > 0)
+                {
+                    listaProdutosSelecionados.Add(produto);
+                }
+            }*/
+        }
+
+        public void verificarValoresProdutosSelecionados()
+        {
+
+            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
+            {
+
+                Produto produto = listaProdutos[i];
+
+                if (produto.quantidade > 0)
+                {
+                    int valorProduto = produto.preco * produto.quantidade;
+                    valorTotalPedidos += valorProduto;
+                }
+            }
+        }
+
+        public void atualizarTextoBotaoConfirmar()
+        {
+
+         //   botaoConfirmarPedido.Text = valorTotalPedidos.ToString();
+
+        }
+
         public void consumirDadosListarProdutos()
         {
 
