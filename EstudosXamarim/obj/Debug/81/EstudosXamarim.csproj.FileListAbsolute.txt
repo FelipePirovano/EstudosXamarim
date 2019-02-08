@@ -95,3 +95,4 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.We
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.Linq.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\android\assets\System.Xml.pdb
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAssemblyReference.cache
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\second_activity.xml

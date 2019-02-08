@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Xml.Serialization;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
@@ -49,8 +50,15 @@ namespace MeusPedidos
             consumirDadosListarProdutos();
             atualizarTextoBotaoConfirmar();
 
-        }
+            botaoConfirmarPedido.Click += delegate {
 
+                Intent intent = new Intent(this, typeof(SecondActivity));
+                StartActivity(intent);
+
+            };
+
+        }
+       
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
