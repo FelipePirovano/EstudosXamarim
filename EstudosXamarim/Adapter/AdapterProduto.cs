@@ -41,6 +41,7 @@ namespace MeusPedidos.Adapter
 
             holder.nome.Text = items[position].nome;
             holder.price.Text = "R$"+ items[position].preco.ToString();
+            holder.quantidade.Text = items[position].quantidade + " UN";
             //Android.Net.Uri url = Android.Net.Uri.Parse(items[position].urlPhoto);
             //holder.image.SetImageURI(url);
 
@@ -49,7 +50,7 @@ namespace MeusPedidos.Adapter
 
             holder.botaoRemover.SetOnClickListener(this);
             holder.botaoRemover.Tag = position;
-
+            
         }
 
         public override int ItemCount => items.Count;
@@ -59,11 +60,12 @@ namespace MeusPedidos.Adapter
         {
             if (v.Id == Resource.Id.bt_adicionar_produto) {
                
-
                 int posicao = (int)v.Tag;
                 items[posicao].quantidade ++ ;
 
-                System.Console.Out.WriteLine("quantidade de itens:"+items[posicao].quantidade);
+                NotifyDataSetChanged();
+
+                System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
 
             }
             else if(v.Id == Resource.Id.bt_remover_produto)
@@ -74,7 +76,9 @@ namespace MeusPedidos.Adapter
                     return;
                 }
                 
-                items[posicao].quantidade--;
+                items[posicao].quantidade-- ;
+
+                NotifyDataSetChanged();
 
                 System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
             }
@@ -85,6 +89,7 @@ namespace MeusPedidos.Adapter
     {
         public TextView nome { get; set; }
         public TextView price { get; set; }
+        public TextView quantidade { get; set; }
         public ImageView image { get; set; }
         public Button botaoAdicionar { get; set; }
         public Button botaoRemover { get; set; }
@@ -96,8 +101,10 @@ namespace MeusPedidos.Adapter
             price = itemView.FindViewById<TextView>(Resource.Id.tv_item_price);
             image = itemView.FindViewById<ImageView>(Resource.Id.iv_item_image);
             botaoAdicionar = itemView.FindViewById<Button>(Resource.Id.bt_adicionar_produto);
-            botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);   
-            
+            botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);
+            quantidade = itemView.FindViewById<TextView>(Resource.Id.tv_quantidade_produtos);
+
+
         }
     }
 }
