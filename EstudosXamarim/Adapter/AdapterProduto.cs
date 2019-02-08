@@ -14,8 +14,7 @@ namespace MeusPedidos.Adapter
     {
         List<Produto> items;
         Context context;
-
-
+        
         public ProdutoAdapter(List<Produto> data)
         {
             items = data;
@@ -23,7 +22,6 @@ namespace MeusPedidos.Adapter
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-
             View itemView = null;
             var id = Resource.Layout.itemListaProduto;
             itemView = LayoutInflater.From(parent.Context).Inflate(id, parent, false);
@@ -58,7 +56,7 @@ namespace MeusPedidos.Adapter
             if (v.Id == Resource.Id.bt_adicionar_produto) {
                
                 int posicao = (int)v.Tag;
-                items[posicao].quantidade ++ ;
+                items[posicao].quantidade++;
 
                 Produto produto = items[posicao];
 
@@ -75,7 +73,7 @@ namespace MeusPedidos.Adapter
                     return;
                 }
                 
-                items[posicao].quantidade-- ;
+                items[posicao].quantidade--;
 
                 Produto produto = items[posicao];
 

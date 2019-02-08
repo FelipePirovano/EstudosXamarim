@@ -28,6 +28,7 @@ namespace MeusPedidos
         List<Produto> listaProdutosSelecionados;
         Android.Widget.ProgressBar progressBar;
         Button botaoConfirmarPedido;
+        LinearLayout ll_confirmar_pedido;
         int valorTotalPedidos;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -43,6 +44,7 @@ namespace MeusPedidos
             progressBar = FindViewById<Android.Widget.ProgressBar>(Resource.Id.progressBar);
 
             botaoConfirmarPedido = FindViewById<Button>(Resource.Id.bt_confirmar_pedido);
+            ll_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ll_confirmar_pedido);
 
             consumirDadosListarProdutos();
             atualizarTextoBotaoConfirmar();
@@ -66,7 +68,7 @@ namespace MeusPedidos
             return base.OnOptionsItemSelected(item);
         }
 
-        public void InicializarRecyclerView()
+        private void InicializarRecyclerView()
         {
 
             layoutManager = new LinearLayoutManager(this);
@@ -101,6 +103,7 @@ namespace MeusPedidos
             
             listaProdutosSelecionados.Add(produto);
             atualizarTextoBotaoConfirmar();
+            visibilidadeBotaoConfirmar();
 
         }
 
@@ -118,19 +121,36 @@ namespace MeusPedidos
 
             valorTotalPedidos -= produto.preco;
 
-            listaProdutosSelecionados.Remove(produto);
+            if(produto.quantidade >= 0)
+            {
+                listaProdutosSelecionados.RemoveAt(produto.quantidade);
+            }
+
             atualizarTextoBotaoConfirmar();
+            visibilidadeBotaoConfirmar();
 
         }
 
-        public void atualizarTextoBotaoConfirmar()
+        private void visibilidadeBotaoConfirmar()
+        {
+            
+            if (listaProdutosSelecionados.Count > 0) {
+                ll_confirmar_pedido.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                ll_confirmar_pedido.Visibility = ViewStates.Gone;
+            }
+        }
+        
+        private void atualizarTextoBotaoConfirmar()
         {
 
             botaoConfirmarPedido.Text = "COMPRAR > R$" + valorTotalPedidos.ToString();
 
         }
 
-        public void consumirDadosListarProdutos()
+        private void consumirDadosListarProdutos()
         {
 
             var request = HttpWebRequest.Create(string.Format(@"https://pastebin.com/raw/eVqp7pfX"));
