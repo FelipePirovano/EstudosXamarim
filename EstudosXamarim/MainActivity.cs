@@ -75,6 +75,8 @@ namespace MeusPedidos
             produtoAdapter = new ProdutoAdapter(listaProdutos);
             listaReciclavelProdutos.SetAdapter(produtoAdapter);
             
+            listaProdutosSelecionados = new List<Produto>();
+
             if (listaProdutos.Count > 1) {
 
                 progressBar.Visibility = ViewStates.Gone;
@@ -83,41 +85,48 @@ namespace MeusPedidos
             }      
         }
 
-        public void verificarProdutosSelecionados()
+        public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, int preco, int categoria, int quantidade)
         {
-         
-            /*for (int i = 0; i < listaProdutos.Count; i++)
-            {
 
-                Produto produto = listaProdutos[i];
+            Produto produto = new Produto();
+            produto.id = id;
+            produto.nome = nome;
+            produto.descricao = descricao;
+            produto.urlPhoto = urlPhoto;
+            produto.preco = preco;
+            produto.categoria = categoria;
+            produto.quantidade = quantidade;
 
-                if (produto.quantidade > 0)
-                {
-                    listaProdutosSelecionados.Add(produto);
-                }
-            }*/
+            valorTotalPedidos += produto.preco;
+            
+            listaProdutosSelecionados.Add(produto);
+            atualizarTextoBotaoConfirmar();
+
         }
 
-        public void verificarValoresProdutosSelecionados()
+        public void removerProduto(int id, string nome, string descricao, string urlPhoto, int preco, int categoria, int quantidade)
         {
 
-            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
-            {
+            Produto produto = new Produto();
+            produto.id = id;
+            produto.nome = nome;
+            produto.descricao = descricao;
+            produto.urlPhoto = urlPhoto;
+            produto.preco = preco;
+            produto.categoria = categoria;
+            produto.quantidade = quantidade;
 
-                Produto produto = listaProdutos[i];
+            valorTotalPedidos -= produto.preco;
 
-                if (produto.quantidade > 0)
-                {
-                    int valorProduto = produto.preco * produto.quantidade;
-                    valorTotalPedidos += valorProduto;
-                }
-            }
+            listaProdutosSelecionados.Remove(produto);
+            atualizarTextoBotaoConfirmar();
+
         }
 
         public void atualizarTextoBotaoConfirmar()
         {
 
-         //   botaoConfirmarPedido.Text = valorTotalPedidos.ToString();
+            botaoConfirmarPedido.Text = "COMPRAR > R$" + valorTotalPedidos.ToString();
 
         }
 

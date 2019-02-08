@@ -60,12 +60,12 @@ namespace MeusPedidos.Adapter
                 int posicao = (int)v.Tag;
                 items[posicao].quantidade ++ ;
 
+                Produto produto = items[posicao];
+
                 NotifyDataSetChanged();
                 
-                ((MainActivity)context).verificarProdutosSelecionados();
-
-                System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
-
+                ((MainActivity)context).adicionarProduto(produto.id,produto.nome,produto.descricao,produto.urlPhoto,produto.preco,produto.categoria,produto.quantidade);
+                
             }
             else if(v.Id == Resource.Id.bt_remover_produto)
             {
@@ -77,11 +77,12 @@ namespace MeusPedidos.Adapter
                 
                 items[posicao].quantidade-- ;
 
+                Produto produto = items[posicao];
+
                 NotifyDataSetChanged();
 
-                ((MainActivity)context).verificarProdutosSelecionados();
+                ((MainActivity)context).removerProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
 
-                System.Console.Out.WriteLine("quantidade de itens:" + items[posicao].quantidade);
             }
         }
     }
