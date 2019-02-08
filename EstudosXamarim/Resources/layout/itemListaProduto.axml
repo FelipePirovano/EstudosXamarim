@@ -65,11 +65,13 @@
 			android:layout_height="wrap_content">
 
 			<Button
+				android:id="@+id/bt_remover_produto"
 				android:text="-"
 				android:layout_height="match_parent"
 				android:layout_width="wrap_content"/>
 
 			<Button
+				android:id="@+id/bt_adicionar_produto"
 				android:text="+"
 				android:layout_height="match_parent"
 				android:layout_width="wrap_content"/>

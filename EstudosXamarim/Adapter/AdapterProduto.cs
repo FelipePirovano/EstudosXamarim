@@ -12,10 +12,9 @@ using Java.IO;
 
 namespace MeusPedidos.Adapter
 {
-    class ProdutoAdapter : RecyclerView.Adapter
+    class ProdutoAdapter : RecyclerView.Adapter, View.IOnClickListener
     {
-        public event EventHandler<Adapter1ClickEventArgs> ItemClick;
-        public event EventHandler<Adapter1ClickEventArgs> ItemLongClick;
+   
         List<Produto> items;
 
         public ProdutoAdapter(List<Produto> data)
@@ -30,7 +29,7 @@ namespace MeusPedidos.Adapter
             //var id = Resource.Layout.itemListaProduto ;
             var id = Resource.Layout.itemListaProduto;
             itemView = LayoutInflater.From(parent.Context).Inflate(id, parent, false);
-            var vh = new Adapter1ViewHolder(itemView, OnClick, OnLongClick);
+            var vh = new Adapter1ViewHolder(itemView);
             return vh;
         }
 
@@ -45,13 +44,26 @@ namespace MeusPedidos.Adapter
             //Android.Net.Uri url = Android.Net.Uri.Parse(items[position].urlPhoto);
             //holder.image.SetImageURI(url);
 
+            holder.botaoAdicionar.SetOnClickListener(this);
+            holder.botaoAdicionar.Tag = position;
+
+            holder.botaoRemover.SetOnClickListener(this);
+            holder.botaoRemover.Tag = position;
+
         }
 
         public override int ItemCount => items.Count;
+        
 
-        void OnClick(Adapter1ClickEventArgs args) => ItemClick?.Invoke(this, args);
-        void OnLongClick(Adapter1ClickEventArgs args) => ItemLongClick?.Invoke(this, args);
-
+        public void OnClick(View v)
+        {
+            if (v.Id == Resource.Id.bt_adicionar_produto) {
+                System.Console.Out.WriteLine("linha do produto"+v.Tag);
+            }else if(v.Id == Resource.Id.bt_remover_produto)
+            {
+                System.Console.Out.WriteLine("linha do produto" + v.Tag);
+            }
+        }
     }
 
     public class Adapter1ViewHolder : RecyclerView.ViewHolder
@@ -59,23 +71,18 @@ namespace MeusPedidos.Adapter
         public TextView nome { get; set; }
         public TextView price { get; set; }
         public ImageView image { get; set; }
+        public Button botaoAdicionar { get; set; }
+        public Button botaoRemover { get; set; }
 
-        public Adapter1ViewHolder(View itemView, Action<Adapter1ClickEventArgs> clickListener,
-                            Action<Adapter1ClickEventArgs> longClickListener) : base(itemView)
+        public Adapter1ViewHolder(View itemView) : base(itemView)
         {
           
             nome = itemView.FindViewById<TextView>(Resource.Id.tv_item_nome);
             price = itemView.FindViewById<TextView>(Resource.Id.tv_item_price);
             image = itemView.FindViewById<ImageView>(Resource.Id.iv_item_image);
-
-            itemView.Click += (sender, e) => clickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
-            itemView.LongClick += (sender, e) => longClickListener(new Adapter1ClickEventArgs { View = itemView, Position = AdapterPosition });
+            botaoAdicionar = itemView.FindViewById<Button>(Resource.Id.bt_adicionar_produto);
+            botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);   
+            
         }
-    }
-
-    public class Adapter1ClickEventArgs : EventArgs
-    {
-        public View View { get; set; }
-        public int Position { get; set; }
     }
 }

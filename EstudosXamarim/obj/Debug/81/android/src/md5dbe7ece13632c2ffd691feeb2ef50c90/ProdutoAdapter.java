@@ -4,7 +4,8 @@ package md5dbe7ece13632c2ffd691feeb2ef50c90;
 public class ProdutoAdapter
 	extends android.support.v7.widget.RecyclerView.Adapter
 	implements
-		mono.android.IGCUserPeer
+		mono.android.IGCUserPeer,
+		android.view.View.OnClickListener
 {
 /** @hide */
 	public static final String __md_methods;
@@ -13,6 +14,7 @@ public class ProdutoAdapter
 			"n_onCreateViewHolder:(Landroid/view/ViewGroup;I)Landroid/support/v7/widget/RecyclerView$ViewHolder;:GetOnCreateViewHolder_Landroid_view_ViewGroup_IHandler\n" +
 			"n_onBindViewHolder:(Landroid/support/v7/widget/RecyclerView$ViewHolder;I)V:GetOnBindViewHolder_Landroid_support_v7_widget_RecyclerView_ViewHolder_IHandler\n" +
 			"n_getItemCount:()I:GetGetItemCountHandler\n" +
+			"n_onClick:(Landroid/view/View;)V:GetOnClick_Landroid_view_View_Handler:Android.Views.View/IOnClickListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
 		mono.android.Runtime.register ("MeusPedidos.Adapter.ProdutoAdapter, EstudosXamarim", ProdutoAdapter.class, __md_methods);
 	}
@@ -48,6 +50,14 @@ public class ProdutoAdapter
 	}
 
 	private native int n_getItemCount ();
+
+
+	public void onClick (android.view.View p0)
+	{
+		n_onClick (p0);
+	}
+
+	private native void n_onClick (android.view.View p0);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

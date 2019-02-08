@@ -67,7 +67,7 @@ namespace MeusPedidos
 
             produtoAdapter = new ProdutoAdapter(listaProdutos);
             listaReciclavelProdutos.SetAdapter(produtoAdapter);
-
+            
             if (listaProdutos.Count > 1) {
 
                 progressBar.Visibility = ViewStates.Gone;
@@ -75,7 +75,7 @@ namespace MeusPedidos
 
             }      
         }
-
+        
         public void consumirDadosListarProdutos()
         {
 
