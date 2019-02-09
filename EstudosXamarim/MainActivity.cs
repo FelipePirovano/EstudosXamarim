@@ -27,17 +27,24 @@ namespace MeusPedidos
         ProdutoAdapter produtoAdapter;
         List<Produto> listaProdutos;
         List<Produto> listaProdutosSelecionados;
+        Android.Support.V7.Widget.Toolbar toolbar;
         Android.Widget.ProgressBar progressBar;
         Button botaoConfirmarPedido;
         LinearLayout ll_confirmar_pedido;
+        LinearLayout ic_confirmar_pedido;
+        LinearLayout ll_recebe_produtos;
+        LayoutInflater inflater;
         int valorTotalPedidos;
+        int SOLICITANDO_PEDIDO = 0;
+        int CONFIRMAAR_PEDIDO = 1;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             toolbar.SetTitle(Resource.String.titulo_toolbar);
             SetSupportActionBar(toolbar);
 
@@ -46,19 +53,22 @@ namespace MeusPedidos
 
             botaoConfirmarPedido = FindViewById<Button>(Resource.Id.bt_confirmar_pedido);
             ll_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ll_confirmar_pedido);
+            ic_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ic_confirmar_pedido);
+            ll_recebe_produtos = FindViewById<LinearLayout>(Resource.Id.ll_recebe_produtos);
+
+            inflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 
             consumirDadosListarProdutos();
             atualizarTextoBotaoConfirmar();
 
             botaoConfirmarPedido.Click += delegate {
 
-                Intent intent = new Intent(this, typeof(SecondActivity));
-                StartActivity(intent);
-
+                gerarLayoutConfirmarPedido();
+               
             };
 
         }
-       
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
@@ -93,6 +103,31 @@ namespace MeusPedidos
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
 
             }      
+        }
+
+        private void gerarLayoutConfirmarPedido()
+        {
+            
+            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
+            {
+
+                Produto produto = listaProdutosSelecionados[i];
+
+                View itemListaProdutoSelecionado = inflater.Inflate(Resource.Layout.itemListaProdutoSelecionado, null);
+                TextView tv_item_nome_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_nome_selecionado);
+                TextView tv_item_quantidade_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_quantidade_selecionado);
+                TextView tv_item_valor_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_valor_selecionado);
+              
+                tv_item_nome_selecionado.Text = produto.nome;
+                tv_item_quantidade_selecionado.Text = produto.quantidade + " UN";
+                tv_item_valor_selecionado.Text = "R$ " + produto.preco;
+                
+                ll_recebe_produtos.AddView(itemListaProdutoSelecionado);
+
+            }
+
+            visibilidadeTela(CONFIRMAAR_PEDIDO);
+
         }
 
         public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, int preco, int categoria, int quantidade)
@@ -136,6 +171,26 @@ namespace MeusPedidos
 
             atualizarTextoBotaoConfirmar();
             visibilidadeBotaoConfirmar();
+
+        }
+
+        private void visibilidadeTela(int ESTADO_TELA)
+        {
+            
+            if(ESTADO_TELA == SOLICITANDO_PEDIDO)
+            {
+
+                listaReciclavelProdutos.Visibility = ViewStates.Visible;
+                ic_confirmar_pedido.Visibility = ViewStates.Gone;
+                toolbar.Visibility = ViewStates.Visible;
+
+            }
+            else if(ESTADO_TELA == CONFIRMAAR_PEDIDO)
+            {
+                listaReciclavelProdutos.Visibility = ViewStates.Gone;
+                ic_confirmar_pedido.Visibility = ViewStates.Visible;
+                toolbar.Visibility = ViewStates.Gone;
+            };
 
         }
 

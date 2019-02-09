@@ -60,4 +60,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+	<include
+		android:layout_below="@+id/sp_toolbar"
+		android:layout_above="@+id/ll_confirmar_pedido"
+		android:id="@+id/ic_confirmar_pedido"
+		layout="@layout/confirmarPedido"
+		android:visibility="gone"
+		/>
+
 </RelativeLayout>
