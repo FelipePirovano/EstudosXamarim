@@ -2363,8 +2363,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F010023
-			public const int action_settings = 2130772003;
+			// aapt resource value: 0x7F010024
+			public const int action_settings = 2130772004;
 			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
@@ -2390,14 +2390,14 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C001A
 			public const int bottom = 2131492890;
 			
+			// aapt resource value: 0x7F010019
+			public const int bt_adicionar_produto = 2130771993;
+			
+			// aapt resource value: 0x7F010008
+			public const int bt_confirmar_pedido = 2130771976;
+			
 			// aapt resource value: 0x7F010018
-			public const int bt_adicionar_produto = 2130771992;
-			
-			// aapt resource value: 0x7F010005
-			public const int bt_confirmar_pedido = 2130771973;
-			
-			// aapt resource value: 0x7F010017
-			public const int bt_remover_produto = 2130771991;
+			public const int bt_remover_produto = 2130771992;
 			
 			// aapt resource value: 0x7F0C001B
 			public const int buttonPanel = 2131492891;
@@ -2486,8 +2486,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C000B
 			public const int icon_group = 2131492875;
 			
-			// aapt resource value: 0x7F010008
-			public const int ic_confirmar_pedido = 2130771976;
+			// aapt resource value: 0x7F010011
+			public const int ic_confirmar_pedido = 2130771985;
 			
 			// aapt resource value: 0x7F0C0038
 			public const int image = 2131492920;
@@ -2501,8 +2501,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C003B
 			public const int item_touch_helper_previous_elevation = 2131492923;
 			
-			// aapt resource value: 0x7F010012
-			public const int iv_item_image = 2130771986;
+			// aapt resource value: 0x7F010013
+			public const int iv_item_image = 2130771987;
 			
 			// aapt resource value: 0x7F0C003C
 			public const int largeLabel = 2131492924;
@@ -2516,8 +2516,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C000F
 			public const int line3 = 2131492879;
 			
-			// aapt resource value: 0x7F010007
-			public const int listaReciclavelProdutos = 2130771975;
+			// aapt resource value: 0x7F010010
+			public const int listaReciclavelProdutos = 2130771984;
 			
 			// aapt resource value: 0x7F0C0040
 			public const int listMode = 2131492928;
@@ -2525,14 +2525,17 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0041
 			public const int list_item = 2131492929;
 			
-			// aapt resource value: 0x7F010016
-			public const int ll_adicionar_remover_produto = 2130771990;
+			// aapt resource value: 0x7F010017
+			public const int ll_adicionar_remover_produto = 2130771991;
 			
 			// aapt resource value: 0x7F010004
 			public const int ll_confirmar_pedido = 2130771972;
 			
-			// aapt resource value: 0x7F010009
-			public const int ll_recebe_produtos = 2130771977;
+			// aapt resource value: 0x7F010012
+			public const int ll_recebe_produtos = 2130771986;
+			
+			// aapt resource value: 0x7F010005
+			public const int ll_resumo_itens_selecionados = 2130771973;
 			
 			// aapt resource value: 0x7F0C0042
 			public const int masked = 2131492930;
@@ -2579,8 +2582,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0050
 			public const int pin = 2131492944;
 			
-			// aapt resource value: 0x7F010006
-			public const int progressBar = 2130771974;
+			// aapt resource value: 0x7F010009
+			public const int progressBar = 2130771977;
 			
 			// aapt resource value: 0x7F0C0051
 			public const int progress_circular = 2131492945;
@@ -2765,32 +2768,32 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C008B
 			public const int transition_transform = 2131493003;
 			
-			// aapt resource value: 0x7F010013
-			public const int tv_item_nome = 2130771987;
-			
-			// aapt resource value: 0x7F010019
-			public const int tv_item_nome_selecionado = 2130771993;
-			
 			// aapt resource value: 0x7F010014
-			public const int tv_item_price = 2130771988;
-			
-			// aapt resource value: 0x7F010021
-			public const int tv_item_promocao_selecionado = 2130772001;
+			public const int tv_item_nome = 2130771988;
 			
 			// aapt resource value: 0x7F010020
-			public const int tv_item_quantidade_selecionado = 2130772000;
-			
-			// aapt resource value: 0x7F010022
-			public const int tv_item_valor_selecionado = 2130772002;
-			
-			// aapt resource value: 0x7F010010
-			public const int tv_quantidade_itens_selecionados = 2130771984;
+			public const int tv_item_nome_selecionado = 2130772000;
 			
 			// aapt resource value: 0x7F010015
-			public const int tv_quantidade_produtos = 2130771989;
+			public const int tv_item_price = 2130771989;
 			
-			// aapt resource value: 0x7F010011
-			public const int tv_valor_total_itens_selecionados = 2130771985;
+			// aapt resource value: 0x7F010022
+			public const int tv_item_promocao_selecionado = 2130772002;
+			
+			// aapt resource value: 0x7F010021
+			public const int tv_item_quantidade_selecionado = 2130772001;
+			
+			// aapt resource value: 0x7F010023
+			public const int tv_item_valor_selecionado = 2130772003;
+			
+			// aapt resource value: 0x7F010006
+			public const int tv_quantidade_itens_selecionados = 2130771974;
+			
+			// aapt resource value: 0x7F010016
+			public const int tv_quantidade_produtos = 2130771990;
+			
+			// aapt resource value: 0x7F010007
+			public const int tv_valor_total_itens_selecionados = 2130771975;
 			
 			// aapt resource value: 0x7F0C008C
 			public const int uniform = 2131493004;

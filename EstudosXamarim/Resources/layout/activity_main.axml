@@ -27,17 +27,76 @@
 		android:id="@+id/ll_confirmar_pedido"
 		android:visibility="gone"
 		android:layout_alignParentBottom="true"
-		android:padding="20dp"
-		android:background="@color/colorPrimary"
+		android:orientation="vertical"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-		<Button
-			android:id="@+id/bt_confirmar_pedido"
-			android:text="Comprar > R$2.991.00"
-			android:textSize="16sp"
+		<LinearLayout
+			android:id="@+id/ll_resumo_itens_selecionados"
+			android:visibility="gone"
+			android:orientation="vertical"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"/>
+			android:layout_height="wrap_content">
+	
+			<TextView
+				android:id="@+id/tv_quantidade_itens_selecionados"
+				android:textAlignment="textEnd"
+				android:textColor="#d8d6d6"
+				android:textSize="16sp"
+				android:paddingTop="10dp"
+				android:paddingRight="20dp"
+				android:paddingLeft="20dp"
+				android:background="@layout/bordaInferior"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:paddingTop="5dp"
+				android:paddingRight="20dp"
+				android:paddingLeft="20dp"
+				android:paddingBottom="20dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+	
+				<TextView
+					android:text="Total"
+					android:textAlignment="textStart"
+					android:layout_width="0dp"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:textColor="#d8d6d6"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"/>
+
+				<TextView
+					android:id="@+id/tv_valor_total_itens_selecionados"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					android:textAlignment="textEnd"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"/>
+
+			</LinearLayout>
+		
+		</LinearLayout>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:padding="20dp"
+			android:background="@color/colorPrimary"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<Button
+				android:id="@+id/bt_confirmar_pedido"
+				android:text="Comprar > R$2.991.00"
+				android:textSize="16sp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"/>
+
+		</LinearLayout>
 
 	</LinearLayout>
 
@@ -58,14 +117,20 @@
 		android:visibility="gone"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
-	<include
+	<ScrollView
 		android:layout_below="@+id/sp_toolbar"
 		android:layout_above="@+id/ll_confirmar_pedido"
 		android:id="@+id/ic_confirmar_pedido"
-		layout="@layout/confirmarPedido"
 		android:visibility="gone"
-		/>
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+			<include
+				layout="@layout/confirmarPedido"
+				/>
+
+	</ScrollView>
 
 </RelativeLayout>

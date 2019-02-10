@@ -31,7 +31,8 @@ namespace MeusPedidos
         Android.Widget.ProgressBar progressBar;
         Button botaoConfirmarPedido;
         LinearLayout ll_confirmar_pedido;
-        LinearLayout ic_confirmar_pedido;
+        LinearLayout ll_resumo_itens_selecionados;
+        ScrollView ic_confirmar_pedido;
         LinearLayout ll_recebe_produtos;
         LayoutInflater inflater;
         TextView tv_quantidade_itens_selecionados;
@@ -56,15 +57,15 @@ namespace MeusPedidos
 
             botaoConfirmarPedido = FindViewById<Button>(Resource.Id.bt_confirmar_pedido);
             ll_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ll_confirmar_pedido);
-            ic_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ic_confirmar_pedido);
+            ic_confirmar_pedido = FindViewById<ScrollView>(Resource.Id.ic_confirmar_pedido);
             ll_recebe_produtos = FindViewById<LinearLayout>(Resource.Id.ll_recebe_produtos);
             tv_quantidade_itens_selecionados = FindViewById<TextView>(Resource.Id.tv_quantidade_itens_selecionados);
             tv_valor_total_itens_selecionados = FindViewById<TextView>(Resource.Id.tv_valor_total_itens_selecionados);
-        
+            ll_resumo_itens_selecionados = FindViewById<LinearLayout>(Resource.Id.ll_resumo_itens_selecionados);
+
             inflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 
             consumirDadosListarProdutos();
-            atualizarTextoBotaoConfirmar();
 
             botaoConfirmarPedido.Click += delegate {
 
@@ -123,9 +124,6 @@ namespace MeusPedidos
             {
                 
                 gerarLayoutConfirmarPedido();
-                botaoConfirmarPedido.Text = "FINALIZAR A COMPRA";
-                tv_quantidade_itens_selecionados.Text = listaProdutosSelecionados.Count + " UN";
-                tv_valor_total_itens_selecionados.Text = "R$" + valorTotalPedidos;
                 
             }
             else if(ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
@@ -212,19 +210,26 @@ namespace MeusPedidos
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
                 ic_confirmar_pedido.Visibility = ViewStates.Gone;
+                ll_resumo_itens_selecionados.Visibility = ViewStates.Gone;
                 toolbar.SetTitle(Resource.String.titulo_toolbar);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
                 menu1.SetVisible(true);
                 SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+                atualizarTextoBotaoConfirmar();
             }
             else if(ESTADO_TELA == CONFIRMAAR_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Gone;
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
+                ll_resumo_itens_selecionados.Visibility = ViewStates.Visible;
                 toolbar.SetTitle(Resource.String.titulo_toolbar_confirmar);
                 menu1.SetVisible(false);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+                botaoConfirmarPedido.Text = "FINALIZAR A COMPRA";
+                tv_quantidade_itens_selecionados.Text = listaProdutosSelecionados.Count + " UN";
+                tv_valor_total_itens_selecionados.Text = "R$" + valorTotalPedidos;
+
             };
 
         }
