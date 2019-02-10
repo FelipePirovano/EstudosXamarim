@@ -21,7 +21,7 @@
 	</ScrollView>
 
 	<TextView
-		android:text="22 UN"
+		android:id="@+id/tv_quantidade_itens_selecionados"
 		android:textAlignment="textEnd"
 		android:textColor="#d8d6d6"
 		android:textSize="16sp"
@@ -52,7 +52,7 @@
 			android:layout_weight="1"/>
 
 		<TextView
-			android:text="R$ 2.906,68"
+			android:id="@+id/tv_valor_total_itens_selecionados"
 			android:textSize="16sp"
 			android:textStyle="bold"
 			android:textAlignment="textEnd"

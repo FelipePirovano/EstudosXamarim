@@ -34,9 +34,12 @@ namespace MeusPedidos
         LinearLayout ic_confirmar_pedido;
         LinearLayout ll_recebe_produtos;
         LayoutInflater inflater;
+        TextView tv_quantidade_itens_selecionados;
+        TextView tv_valor_total_itens_selecionados;
         int valorTotalPedidos;
         int SOLICITANDO_PEDIDO = 0;
         int CONFIRMAAR_PEDIDO = 1;
+        int ESTADO_TELA_ATIVO = 0;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -55,7 +58,9 @@ namespace MeusPedidos
             ll_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ll_confirmar_pedido);
             ic_confirmar_pedido = FindViewById<LinearLayout>(Resource.Id.ic_confirmar_pedido);
             ll_recebe_produtos = FindViewById<LinearLayout>(Resource.Id.ll_recebe_produtos);
-
+            tv_quantidade_itens_selecionados = FindViewById<TextView>(Resource.Id.tv_quantidade_itens_selecionados);
+            tv_valor_total_itens_selecionados = FindViewById<TextView>(Resource.Id.tv_valor_total_itens_selecionados);
+        
             inflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
 
             consumirDadosListarProdutos();
@@ -63,8 +68,8 @@ namespace MeusPedidos
 
             botaoConfirmarPedido.Click += delegate {
 
-                gerarLayoutConfirmarPedido();
-               
+                acaoBotaoConformeTela();
+
             };
 
         }
@@ -103,6 +108,27 @@ namespace MeusPedidos
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
 
             }      
+        }
+
+        private void acaoBotaoConformeTela()
+        {
+
+            if(ESTADO_TELA_ATIVO == SOLICITANDO_PEDIDO)
+            {
+                
+                gerarLayoutConfirmarPedido();
+                botaoConfirmarPedido.Text = "FINALIZAR A COMPRA";
+                tv_quantidade_itens_selecionados.Text = listaProdutosSelecionados.Count + " UN";
+                tv_valor_total_itens_selecionados.Text = "R$" + valorTotalPedidos;
+                
+            }
+            else if(ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
+            {
+
+                //EFETUAR MICRO ANIMAÇÂO DENTROD E UM DIALOG PARA INFORMAR PEDIDO FINALIZADO
+
+            }
+
         }
 
         private void gerarLayoutConfirmarPedido()
@@ -179,17 +205,17 @@ namespace MeusPedidos
             
             if(ESTADO_TELA == SOLICITANDO_PEDIDO)
             {
-
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
                 ic_confirmar_pedido.Visibility = ViewStates.Gone;
                 toolbar.Visibility = ViewStates.Visible;
-
+                ESTADO_TELA_ATIVO = ESTADO_TELA;
             }
             else if(ESTADO_TELA == CONFIRMAAR_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Gone;
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
                 toolbar.Visibility = ViewStates.Gone;
+                ESTADO_TELA_ATIVO = ESTADO_TELA;
             };
 
         }
