@@ -2939,7 +2939,10 @@ namespace EstudosXamarim
 			public const int activity_main = 2130837506;
 			
 			// aapt resource value: 0x7F020003
-			public const int confirmarPedido = 2130837507;
+			public const int bordaInferior = 2130837507;
+			
+			// aapt resource value: 0x7F020004
+			public const int confirmarPedido = 2130837508;
 			
 			// aapt resource value: 0x7F0F001B
 			public const int design_bottom_navigation_item = 2131689499;
@@ -2983,11 +2986,11 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0F0028
 			public const int design_text_input_password_icon = 2131689512;
 			
-			// aapt resource value: 0x7F020004
-			public const int itemListaProduto = 2130837508;
-			
 			// aapt resource value: 0x7F020005
-			public const int itemListaProdutoSelecionado = 2130837509;
+			public const int itemListaProduto = 2130837509;
+			
+			// aapt resource value: 0x7F020006
+			public const int itemListaProdutoSelecionado = 2130837510;
 			
 			// aapt resource value: 0x7F0F0001
 			public const int notification_action = 2131689473;
@@ -3034,8 +3037,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0F0006
 			public const int notification_template_part_time = 2131689478;
 			
-			// aapt resource value: 0x7F020006
-			public const int SecondActivity = 2130837510;
+			// aapt resource value: 0x7F020007
+			public const int SecondActivity = 2130837511;
 			
 			// aapt resource value: 0x7F0F0038
 			public const int select_dialog_item_material = 2131689528;

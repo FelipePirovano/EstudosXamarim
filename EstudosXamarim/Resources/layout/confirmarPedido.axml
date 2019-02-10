@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-	android:padding="20dp"
-	android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 	<ScrollView
+		android:paddingTop="20dp"
+		android:paddingRight="20dp"
+		android:paddingBottom="5dp"
+	    android:background="#ffffff" 
 		android:layout_width="match_parent"
 	    android:layout_height="wrap_content">
 
@@ -21,15 +23,21 @@
 	<TextView
 		android:text="22 UN"
 		android:textAlignment="textEnd"
-		android:layout_marginTop="40dp"
 		android:textColor="#d8d6d6"
 		android:textSize="16sp"
+		android:paddingTop="20dp"
+		android:paddingRight="20dp"
+		android:paddingBottom="5dp"
+		android:background="@layout/bordaInferior"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 	<LinearLayout
 		android:orientation="horizontal"
-		android:layout_marginTop="40dp"
+		android:paddingTop="5dp"
+		android:paddingRight="20dp"
+		android:paddingBottom="20dp"
+		android:paddingStart="20dp"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content">
 	
@@ -53,6 +61,5 @@
 			android:layout_weight="1"/>
 
 	</LinearLayout>
-
 
 </LinearLayout>
