@@ -3275,6 +3275,7 @@ containing a value of this type.
         public static final int search_menu_title=0x7f090011;
         public static final int status_bar_notification_info_overflow=0x7f090026;
         public static final int titulo_toolbar=0x7f090029;
+        public static final int titulo_toolbar_confirmar=0x7f09002a;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0a0095;

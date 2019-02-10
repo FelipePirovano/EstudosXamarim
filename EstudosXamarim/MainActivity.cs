@@ -40,8 +40,8 @@ namespace MeusPedidos
         int SOLICITANDO_PEDIDO = 0;
         int CONFIRMAAR_PEDIDO = 1;
         int ESTADO_TELA_ATIVO = 0;
-
-
+        IMenuItem menu1;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -77,15 +77,21 @@ namespace MeusPedidos
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            menu1 = menu.GetItem(0);
             return true;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
+            
             if (id == Resource.Id.action_settings)
             {
                 return true;
+            }
+            else if (id == Android.Resource.Id.Home) {
+                visibilidadeTela(SOLICITANDO_PEDIDO);
+                rezetarLayoutConfirmarPedido();
             }
 
             return base.OnOptionsItemSelected(item);
@@ -194,8 +200,7 @@ namespace MeusPedidos
             {
                 listaProdutosSelecionados.RemoveAt(produto.quantidade);
             }
-
-            atualizarTextoBotaoConfirmar();
+            
             visibilidadeBotaoConfirmar();
 
         }
@@ -207,15 +212,19 @@ namespace MeusPedidos
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
                 ic_confirmar_pedido.Visibility = ViewStates.Gone;
-                toolbar.Visibility = ViewStates.Visible;
+                toolbar.SetTitle(Resource.String.titulo_toolbar);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
+                menu1.SetVisible(true);
+                SupportActionBar.SetDisplayHomeAsUpEnabled(false);
             }
             else if(ESTADO_TELA == CONFIRMAAR_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Gone;
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
-                toolbar.Visibility = ViewStates.Gone;
+                toolbar.SetTitle(Resource.String.titulo_toolbar_confirmar);
+                menu1.SetVisible(false);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
+                SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             };
 
         }
@@ -237,6 +246,11 @@ namespace MeusPedidos
 
             botaoConfirmarPedido.Text = "COMPRAR > R$" + valorTotalPedidos.ToString();
 
+        }
+
+        private void rezetarLayoutConfirmarPedido()
+        {
+            ll_recebe_produtos.RemoveAllViews();
         }
 
         private void consumirDadosListarProdutos()

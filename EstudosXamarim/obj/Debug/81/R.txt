@@ -1051,6 +1051,7 @@ int string path_password_strike_through 0x7f090025
 int string search_menu_title 0x7f090011
 int string status_bar_notification_info_overflow 0x7f090026
 int string titulo_toolbar 0x7f090029
+int string titulo_toolbar_confirmar 0x7f09002a
 int style AlertDialog_AppCompat 0x7f0a0095
 int style AlertDialog_AppCompat_Light 0x7f0a0096
 int style Animation_AppCompat_Dialog 0x7f0a0097

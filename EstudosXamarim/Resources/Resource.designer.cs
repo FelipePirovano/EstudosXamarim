@@ -3346,6 +3346,9 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7f090029
 			public const int titulo_toolbar = 2131296297;
 			
+			// aapt resource value: 0x7f09002a
+			public const int titulo_toolbar_confirmar = 2131296298;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
