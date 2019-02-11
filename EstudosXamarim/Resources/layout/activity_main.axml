@@ -90,8 +90,13 @@
 
 			<Button
 				android:id="@+id/bt_confirmar_pedido"
-				android:text="Comprar > R$2.991.00"
+				android:text="Comprar > R$0"
 				android:textSize="16sp"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:background="@layout/botaoEstiloso"
+				style="@style/botao_estiloso"
+				android:backgroundTint="@color/colorAccent"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"/>
 

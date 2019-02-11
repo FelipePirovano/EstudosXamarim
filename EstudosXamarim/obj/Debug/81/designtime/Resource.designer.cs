@@ -2954,7 +2954,10 @@ namespace EstudosXamarim
 			public const int bordaInferior = 2130837507;
 			
 			// aapt resource value: 0x7F020004
-			public const int confirmarPedido = 2130837508;
+			public const int botaoEstiloso = 2130837508;
+			
+			// aapt resource value: 0x7F020005
+			public const int confirmarPedido = 2130837509;
 			
 			// aapt resource value: 0x7F0F001B
 			public const int design_bottom_navigation_item = 2131689499;
@@ -2998,11 +3001,11 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0F0028
 			public const int design_text_input_password_icon = 2131689512;
 			
-			// aapt resource value: 0x7F020005
-			public const int itemListaProduto = 2130837509;
-			
 			// aapt resource value: 0x7F020006
-			public const int itemListaProdutoSelecionado = 2130837510;
+			public const int itemListaProduto = 2130837510;
+			
+			// aapt resource value: 0x7F020007
+			public const int itemListaProdutoSelecionado = 2130837511;
 			
 			// aapt resource value: 0x7F0F0001
 			public const int notification_action = 2131689473;
@@ -3049,8 +3052,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0F0006
 			public const int notification_template_part_time = 2131689478;
 			
-			// aapt resource value: 0x7F020007
-			public const int SecondActivity = 2130837511;
+			// aapt resource value: 0x7F020008
+			public const int SecondActivity = 2130837512;
 			
 			// aapt resource value: 0x7F0F0038
 			public const int select_dialog_item_material = 2131689528;
@@ -3290,8 +3293,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F080003
 			public const int AppTheme_NoActionBar = 2131230723;
 			
-			// aapt resource value: 0x7F080005
-			public const int AppTheme_PopupOverlay = 2131230725;
+			// aapt resource value: 0x7F080006
+			public const int AppTheme_PopupOverlay = 2131230726;
 			
 			// aapt resource value: 0x7F160007
 			public const int Base_AlertDialog_AppCompat = 2132148231;
@@ -3781,6 +3784,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F1600A9
 			public const int Base_Widget_Design_TabLayout = 2132148393;
+			
+			// aapt resource value: 0x7F080005
+			public const int botao_estiloso = 2131230725;
 			
 			// aapt resource value: 0x7F1600AA
 			public const int Platform_AppCompat = 2132148394;
