@@ -39,6 +39,7 @@ namespace MeusPedidos
         TextView tv_quantidade_itens_selecionados;
         TextView tv_valor_total_itens_selecionados;
         int valorTotalPedidos;
+        int quantidadeTotalProdutos;
         int SOLICITANDO_PEDIDO = 0;
         int CONFIRMAAR_PEDIDO = 1;
         int ESTADO_TELA_ATIVO = 0;
@@ -190,6 +191,7 @@ namespace MeusPedidos
             }
 
             listaProdutosSelecionados.Add(produto);
+            quantidadeTotalProdutos++;
 
             calcularValorTotal();
             atualizarTextoBotaoConfirmar();
@@ -219,6 +221,7 @@ namespace MeusPedidos
                 }
             }
 
+            quantidadeTotalProdutos--;
             calcularValorTotal();
             atualizarTextoBotaoConfirmar();
     
@@ -233,10 +236,10 @@ namespace MeusPedidos
             {
 
                 Produto produto = listaProdutosSelecionados[i];
-
                 valorTotalPedidos += produto.preco * produto.quantidade;
-
+              
             }
+
         }
 
         private void visibilidadeTela(int ESTADO_TELA)
@@ -263,7 +266,7 @@ namespace MeusPedidos
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
                 botaoConfirmarPedido.Text = "FINALIZAR A COMPRA";
-                tv_quantidade_itens_selecionados.Text = listaProdutosSelecionados.Count + " UN";
+                tv_quantidade_itens_selecionados.Text = quantidadeTotalProdutos + " UN";
                 tv_valor_total_itens_selecionados.Text = "R$" + valorTotalPedidos;
 
             };
