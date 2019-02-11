@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using EstudosXamarim;
 using Android.Content;
 using EstudosXamarim.Model;
+using Android.Graphics;
+using System.Net;
 
 namespace MeusPedidos.Adapter
 {
@@ -39,12 +41,21 @@ namespace MeusPedidos.Adapter
             holder.nome.Text = items[position].nome;
             holder.price.Text = "R$"+ items[position].preco;
             holder.quantidade.Text = items[position].quantidade + " UN";
+            holder.image.SetImageBitmap(GetImageBitmapFromUrl(items[position].urlPhoto));
+
+            if (items[position].desconto > 0) {
+                holder.promocao.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                holder.promocao.Visibility = ViewStates.Invisible;
+            }
 
             holder.promocao.Text = items[position].desconto + "%";
             
             holder.botaoAdicionar.SetOnClickListener(this);
             holder.botaoAdicionar.Tag = position;
-
+            
             holder.botaoRemover.SetOnClickListener(this);
             holder.botaoRemover.Tag = position;
             
@@ -60,10 +71,12 @@ namespace MeusPedidos.Adapter
 
                 Produto produto = items[posicao];
                 produto.quantidade++;
-
+                
                 produto.gerarDesconto(false);
- 
+   
                 NotifyDataSetChanged();
+
+                NotifyItemChanged(posicao);
                 
                 ((MainActivity)context).adicionarProduto(produto.id,produto.nome,produto.descricao,produto.urlPhoto,produto.preco,produto.categoria,produto.quantidade);
                 
@@ -78,7 +91,7 @@ namespace MeusPedidos.Adapter
                 
                 Produto produto = items[posicao];
                 produto.quantidade--;
-
+   
                 produto.retirarDesconto();
                 
                 NotifyDataSetChanged();
@@ -87,9 +100,26 @@ namespace MeusPedidos.Adapter
 
             }
         }
-    
+
+        private Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+
+            using (var webClient = new WebClient())
+            {
+                var imageBytes = webClient.DownloadData(url);
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                }
+            }
+
+            return imageBitmap;
+        }
+        
     }
 
+    
     public class Adapter1ViewHolder : RecyclerView.ViewHolder
     {
         public TextView nome { get; set; }
