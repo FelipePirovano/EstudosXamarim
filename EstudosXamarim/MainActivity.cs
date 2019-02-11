@@ -43,8 +43,8 @@ namespace MeusPedidos
         int CONFIRMAAR_PEDIDO = 1;
         int ESTADO_TELA_ATIVO = 0;
         IMenuItem menu1;
-        List <Promocao> listaPromocoes;
-        
+        List<Promocao> listaPromocoes;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -66,9 +66,9 @@ namespace MeusPedidos
             ll_resumo_itens_selecionados = FindViewById<LinearLayout>(Resource.Id.ll_resumo_itens_selecionados);
 
             inflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
-            
+
             consumirDadosListarPromocoes();
-            
+
             botaoConfirmarPedido.Click += delegate {
 
                 acaoBotaoConformeTela();
@@ -87,7 +87,7 @@ namespace MeusPedidos
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            
+
             if (id == Resource.Id.action_settings)
             {
                 return true;
@@ -108,7 +108,7 @@ namespace MeusPedidos
 
             produtoAdapter = new ProdutoAdapter(listaProdutos);
             listaReciclavelProdutos.SetAdapter(produtoAdapter);
-            
+
             listaProdutosSelecionados = new List<Produto>();
 
             if (listaProdutos.Count > 1) {
@@ -116,19 +116,19 @@ namespace MeusPedidos
                 progressBar.Visibility = ViewStates.Gone;
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
 
-            }      
+            }
         }
 
         private void acaoBotaoConformeTela()
         {
 
-            if(ESTADO_TELA_ATIVO == SOLICITANDO_PEDIDO)
+            if (ESTADO_TELA_ATIVO == SOLICITANDO_PEDIDO)
             {
-                
+
                 gerarLayoutConfirmarPedido();
-                
+
             }
-            else if(ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
+            else if (ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
             {
 
                 //EFETUAR MICRO ANIMAÇÂO DENTRO DE UM DIALOG PARA INFORMAR PEDIDO FINALIZADO
@@ -139,7 +139,7 @@ namespace MeusPedidos
 
         private void gerarLayoutConfirmarPedido()
         {
-            
+
             for (int i = 0; i < listaProdutosSelecionados.Count; i++)
             {
 
@@ -149,11 +149,11 @@ namespace MeusPedidos
                 TextView tv_item_nome_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_nome_selecionado);
                 TextView tv_item_quantidade_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_quantidade_selecionado);
                 TextView tv_item_valor_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_valor_selecionado);
-              
+
                 tv_item_nome_selecionado.Text = produto.nome;
                 tv_item_quantidade_selecionado.Text = produto.quantidade + " UN";
                 tv_item_valor_selecionado.Text = "R$ " + produto.preco;
-                
+
                 ll_recebe_produtos.AddView(itemListaProdutoSelecionado);
 
             }
@@ -173,10 +173,10 @@ namespace MeusPedidos
             produto.preco = preco;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
-
-            valorTotalPedidos += produto.preco;
             
             listaProdutosSelecionados.Add(produto);
+
+            calcularValorTotal();
             atualizarTextoBotaoConfirmar();
             visibilidadeBotaoConfirmar();
 
@@ -193,17 +193,31 @@ namespace MeusPedidos
             produto.preco = preco;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
-
-            valorTotalPedidos -= produto.preco;
-
-            if(produto.quantidade >= 0)
+           
+            if (produto.quantidade >= 0)
             {
                 listaProdutosSelecionados.RemoveAt(produto.quantidade);
             }
 
+            calcularValorTotal();
             atualizarTextoBotaoConfirmar();
             visibilidadeBotaoConfirmar();
 
+        }
+
+        public void calcularValorTotal()
+        {
+
+            valorTotalPedidos = 0;
+
+            for(int i = 0; i < listaProdutosSelecionados.Count; i++)
+            {
+
+                Produto produto = listaProdutosSelecionados[i];
+
+                valorTotalPedidos += produto.preco;
+
+            }
         }
 
         private void visibilidadeTela(int ESTADO_TELA)
@@ -246,6 +260,7 @@ namespace MeusPedidos
             else
             {
                 ll_confirmar_pedido.Visibility = ViewStates.Gone;
+                valorTotalPedidos = 0;
             }
         }
         

@@ -24,8 +24,45 @@ namespace MeusPedidos.Model
         public int quantidade { get; set; }
         public Promocao promocao { get; set; }
         public int desconto { get; set; }
-      
+        public int precoFixo { get; set; }
+
+        public void gerarDesconto()
+        {
+            try
+            {
+                List<Politicas> arrayPoliticas = promocao.politicas;
+
+                for (int i = 0; i < arrayPoliticas.Count; i++)
+                {
+
+                    Politicas politicas = arrayPoliticas[i];
+
+                    if (quantidade == politicas.quantidadeMinima)
+                    {
+                        desconto = politicas.desconto;
+                        precoFixo = preco;
+
+                        int valorDesconto = precoFixo * desconto / 100;
+                        preco = preco - valorDesconto;
+
+                    }
+                }
+            }
+            catch
+            {
+                //controle de variável null
+            }
+        }
+
+        public void retirarDesconto()
+        {
+            preco = precoFixo;
+            gerarDesconto();
+        }
+
     }
+
+
 
    
 

@@ -61,8 +61,8 @@ namespace MeusPedidos.Adapter
                 Produto produto = items[posicao];
                 produto.quantidade++;
 
-                gerarDesconto();
-
+                produto.gerarDesconto();
+ 
                 NotifyDataSetChanged();
                 
                 ((MainActivity)context).adicionarProduto(produto.id,produto.nome,produto.descricao,produto.urlPhoto,produto.preco,produto.categoria,produto.quantidade);
@@ -79,21 +79,15 @@ namespace MeusPedidos.Adapter
                 Produto produto = items[posicao];
                 produto.quantidade--;
 
-                gerarDesconto();
-
+                produto.retirarDesconto();
+                
                 NotifyDataSetChanged();
 
                 ((MainActivity)context).removerProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
 
             }
         }
-
-        public void gerarDesconto()
-        {
-            //Aplicar desconto
-            
-        }
-
+    
     }
 
     public class Adapter1ViewHolder : RecyclerView.ViewHolder
