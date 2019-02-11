@@ -92,7 +92,8 @@ namespace MeusPedidos
             {
                 return true;
             }
-            else if (id == Android.Resource.Id.Home) {
+            else if (id == Android.Resource.Id.Home)
+            {
                 visibilidadeTela(SOLICITANDO_PEDIDO);
                 rezetarLayoutConfirmarPedido();
             }
@@ -111,7 +112,8 @@ namespace MeusPedidos
 
             listaProdutosSelecionados = new List<Produto>();
 
-            if (listaProdutos.Count > 1) {
+            if (listaProdutos.Count > 1)
+            {
 
                 progressBar.Visibility = ViewStates.Gone;
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
@@ -126,6 +128,8 @@ namespace MeusPedidos
             {
 
                 gerarLayoutConfirmarPedido();
+
+                //VALIDAÇÃO ITENS LISTA
 
             }
             else if (ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
@@ -173,12 +177,22 @@ namespace MeusPedidos
             produto.preco = preco;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
-            
+
+            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
+            {
+                Produto validarProduto = listaProdutosSelecionados[i];
+
+                if (validarProduto.id == produto.id)
+                {
+                    listaProdutosSelecionados.Remove(validarProduto);
+                }
+
+            }
+
             listaProdutosSelecionados.Add(produto);
 
             calcularValorTotal();
             atualizarTextoBotaoConfirmar();
-            visibilidadeBotaoConfirmar();
 
         }
 
@@ -193,16 +207,21 @@ namespace MeusPedidos
             produto.preco = preco;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
-           
-            if (produto.quantidade >= 0)
+
+
+            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
             {
-                listaProdutosSelecionados.RemoveAt(produto.quantidade);
+                Produto validarProduto = listaProdutosSelecionados[i];
+
+                if (validarProduto.id == produto.id)
+                {
+                    validarProduto.quantidade -= 1;
+                }
             }
 
             calcularValorTotal();
             atualizarTextoBotaoConfirmar();
-            visibilidadeBotaoConfirmar();
-
+    
         }
 
         public void calcularValorTotal()
@@ -210,20 +229,20 @@ namespace MeusPedidos
 
             valorTotalPedidos = 0;
 
-            for(int i = 0; i < listaProdutosSelecionados.Count; i++)
+            for (int i = 0; i < listaProdutosSelecionados.Count; i++)
             {
 
                 Produto produto = listaProdutosSelecionados[i];
 
-                valorTotalPedidos += produto.preco;
+                valorTotalPedidos += produto.preco * produto.quantidade;
 
             }
         }
 
         private void visibilidadeTela(int ESTADO_TELA)
         {
-            
-            if(ESTADO_TELA == SOLICITANDO_PEDIDO)
+
+            if (ESTADO_TELA == SOLICITANDO_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
                 ic_confirmar_pedido.Visibility = ViewStates.Gone;
@@ -234,7 +253,7 @@ namespace MeusPedidos
                 SupportActionBar.SetDisplayHomeAsUpEnabled(false);
                 atualizarTextoBotaoConfirmar();
             }
-            else if(ESTADO_TELA == CONFIRMAAR_PEDIDO)
+            else if (ESTADO_TELA == CONFIRMAAR_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Gone;
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
@@ -251,19 +270,6 @@ namespace MeusPedidos
 
         }
 
-        private void visibilidadeBotaoConfirmar()
-        {
-            
-            if (listaProdutosSelecionados.Count > 0) {
-                ll_confirmar_pedido.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                ll_confirmar_pedido.Visibility = ViewStates.Gone;
-                valorTotalPedidos = 0;
-            }
-        }
-        
         private void atualizarTextoBotaoConfirmar()
         {
 
@@ -290,46 +296,47 @@ namespace MeusPedidos
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     var content = reader.ReadToEnd();
-                    
+
                     if (string.IsNullOrWhiteSpace(content))
                     {
                         Console.Out.WriteLine("Json vazio no retorno da chamada ListarProdutos");
                     }
                     else
                     {
-                        JArray jsonArrayProdutos  = JArray.Parse(content);
+                        JArray jsonArrayProdutos = JArray.Parse(content);
                         listaProdutos = new List<Produto>();
 
                         for (int i = 0; i < jsonArrayProdutos.Count; i++)
                         {
 
                             var produto = new Produto();
-                            var obj  = jsonArrayProdutos[i];
+                            var obj = jsonArrayProdutos[i];
 
                             produto.id = obj["id"].Value<int>();
                             produto.nome = obj["name"].Value<string>();
                             produto.descricao = obj["description"].Value<string>();
                             produto.urlPhoto = obj["photo"].Value<string>();
                             produto.preco = obj["price"].Value<int>();
+                            produto.precoFixo = obj["price"].Value<int>();
 
                             if (obj["category_id"].Type != JTokenType.Null)
                             {
                                 produto.categoria = obj["category_id"].Value<int>();
                             }
 
-                            for(int position = 0; position < listaPromocoes.Count; position++)
+                            for (int position = 0; position < listaPromocoes.Count; position++)
                             {
 
                                 Promocao promocao = listaPromocoes[position];
-                                
+
                                 if (produto.categoria == promocao.categoria)
                                 {
                                     produto.promocao = promocao;
                                 }
                             }
-                            
+
                             listaProdutos.Add(produto);
-                            
+
                         }
 
                         InicializarRecyclerView();
@@ -360,7 +367,7 @@ namespace MeusPedidos
                     }
                     else
                     {
-                        
+
                         JArray jsonArrayPromocoes = JArray.Parse(content);
                         listaPromocoes = new List<Promocao>();
 
@@ -372,7 +379,7 @@ namespace MeusPedidos
                             promocao.nome = obj["name"].Value<string>();
                             promocao.categoria = obj["category_id"].Value<int>();
                             JArray arrayPoliticas = obj["policies"].Value<JArray>();
-                            
+
                             List<Politicas> listaPoliticas = new List<Politicas>();
 
                             for (int position = 0; position < arrayPoliticas.Count; position++)
@@ -381,17 +388,17 @@ namespace MeusPedidos
                                 Politicas politica = new Politicas();
 
                                 var objPromocoes = arrayPoliticas[position];
-                               
+
                                 politica.quantidadeMinima = objPromocoes["min"].Value<int>();
                                 politica.desconto = objPromocoes["discount"].Value<int>();
 
                                 listaPoliticas.Add(politica);
-                                
+
                             }
 
                             promocao.politicas = listaPoliticas;
                             listaPromocoes.Add(promocao);
-                     
+
                         }
 
                         consumirDadosListarProdutos();

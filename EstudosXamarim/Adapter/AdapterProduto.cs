@@ -61,7 +61,7 @@ namespace MeusPedidos.Adapter
                 Produto produto = items[posicao];
                 produto.quantidade++;
 
-                produto.gerarDesconto();
+                produto.gerarDesconto(false);
  
                 NotifyDataSetChanged();
                 

@@ -25,7 +25,6 @@
 
 	<LinearLayout
 		android:id="@+id/ll_confirmar_pedido"
-		android:visibility="gone"
 		android:layout_alignParentBottom="true"
 		android:orientation="vertical"
 		android:layout_width="match_parent"

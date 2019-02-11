@@ -25,13 +25,16 @@ namespace MeusPedidos.Model
         public Promocao promocao { get; set; }
         public int desconto { get; set; }
         public int precoFixo { get; set; }
+        
+        private int ultimaUnidadeDescontoAplicada { get; set; }
+        private int ultimoDescontoAplicado { get; set; }
 
-        public void gerarDesconto()
+        public void gerarDesconto(bool retirandoProduto)
         {
             try
             {
                 List<Politicas> arrayPoliticas = promocao.politicas;
-
+                
                 for (int i = 0; i < arrayPoliticas.Count; i++)
                 {
 
@@ -39,12 +42,39 @@ namespace MeusPedidos.Model
 
                     if (quantidade == politicas.quantidadeMinima)
                     {
+                        ultimoDescontoAplicado = desconto;
                         desconto = politicas.desconto;
-                        precoFixo = preco;
-
+                        
                         int valorDesconto = precoFixo * desconto / 100;
-                        preco = preco - valorDesconto;
+                        int valorDescontado = preco - valorDesconto;
 
+                        preco = valorDescontado;
+
+                        ultimaUnidadeDescontoAplicada = quantidade;
+                        
+                    }
+                    else if (quantidade > 0) {
+                        
+                        if (quantidade == ultimaUnidadeDescontoAplicada - 1)
+                        {
+                            
+                            if (retirandoProduto)
+                            {
+                                desconto = ultimoDescontoAplicado;
+
+                                int precoAnterior = precoFixo * desconto / 100;
+                                preco = precoFixo - precoAnterior;
+                                return;
+                            }
+                            
+                        }
+
+                        int descontoRules = precoFixo * desconto / 100;
+                        preco = precoFixo - descontoRules;
+                        
+                    }else if(quantidade == 0)
+                    {
+                        desconto = 0;
                     }
                 }
             }
@@ -57,7 +87,8 @@ namespace MeusPedidos.Model
         public void retirarDesconto()
         {
             preco = precoFixo;
-            gerarDesconto();
+            gerarDesconto(true);
+
         }
 
     }
