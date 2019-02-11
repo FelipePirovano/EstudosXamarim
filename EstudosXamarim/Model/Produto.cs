@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using EstudosXamarim.Model;
 
 namespace MeusPedidos.Model
 {
@@ -21,5 +22,12 @@ namespace MeusPedidos.Model
         public int preco { get; set; }
         public int categoria { get; set; }
         public int quantidade { get; set; }
+        public Promocao promocao { get; set; }
+        public int desconto { get; set; }
+      
     }
+
+   
+
 }
+ 

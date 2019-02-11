@@ -7,6 +7,7 @@ using MeusPedidos.Model;
 using System.Collections.Generic;
 using EstudosXamarim;
 using Android.Content;
+using EstudosXamarim.Model;
 
 namespace MeusPedidos.Adapter
 {
@@ -33,13 +34,14 @@ namespace MeusPedidos.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
         {
-            var item = items[position];
             var holder = viewHolder as Adapter1ViewHolder;
 
             holder.nome.Text = items[position].nome;
             holder.price.Text = "R$"+ items[position].preco;
             holder.quantidade.Text = items[position].quantidade + " UN";
-       
+
+            holder.promocao.Text = items[position].desconto + "%";
+            
             holder.botaoAdicionar.SetOnClickListener(this);
             holder.botaoAdicionar.Tag = position;
 
@@ -47,18 +49,19 @@ namespace MeusPedidos.Adapter
             holder.botaoRemover.Tag = position;
             
         }
-
-        public override int ItemCount => items.Count;
         
-
+        public override int ItemCount => items.Count;
+       
         public void OnClick(View v)
         {
             if (v.Id == Resource.Id.bt_adicionar_produto) {
                
                 int posicao = (int)v.Tag;
-                items[posicao].quantidade++;
 
                 Produto produto = items[posicao];
+                produto.quantidade++;
+
+                gerarDesconto();
 
                 NotifyDataSetChanged();
                 
@@ -73,9 +76,10 @@ namespace MeusPedidos.Adapter
                     return;
                 }
                 
-                items[posicao].quantidade--;
-
                 Produto produto = items[posicao];
+                produto.quantidade--;
+
+                gerarDesconto();
 
                 NotifyDataSetChanged();
 
@@ -83,6 +87,13 @@ namespace MeusPedidos.Adapter
 
             }
         }
+
+        public void gerarDesconto()
+        {
+            //Aplicar desconto
+            
+        }
+
     }
 
     public class Adapter1ViewHolder : RecyclerView.ViewHolder
@@ -93,6 +104,7 @@ namespace MeusPedidos.Adapter
         public ImageView image { get; set; }
         public Button botaoAdicionar { get; set; }
         public Button botaoRemover { get; set; }
+        public TextView promocao { get; set; }
 
         public Adapter1ViewHolder(View itemView) : base(itemView)
         {
@@ -103,6 +115,7 @@ namespace MeusPedidos.Adapter
             botaoAdicionar = itemView.FindViewById<Button>(Resource.Id.bt_adicionar_produto);
             botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);
             quantidade = itemView.FindViewById<TextView>(Resource.Id.tv_quantidade_produtos);
+            promocao = itemView.FindViewById<TextView>(Resource.Id.tv_item_promocao);
 
         }
     }

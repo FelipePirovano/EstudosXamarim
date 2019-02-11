@@ -11,6 +11,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using EstudosXamarim;
+using EstudosXamarim.Model;
 using MeusPedidos.Adapter;
 using MeusPedidos.Model;
 using Newtonsoft.Json.Linq;
@@ -42,6 +43,7 @@ namespace MeusPedidos
         int CONFIRMAAR_PEDIDO = 1;
         int ESTADO_TELA_ATIVO = 0;
         IMenuItem menu1;
+        List <Promocao> listaPromocoes;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -64,9 +66,9 @@ namespace MeusPedidos
             ll_resumo_itens_selecionados = FindViewById<LinearLayout>(Resource.Id.ll_resumo_itens_selecionados);
 
             inflater = (LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
-
-            consumirDadosListarProdutos();
-
+            
+            consumirDadosListarPromocoes();
+            
             botaoConfirmarPedido.Click += delegate {
 
                 acaoBotaoConformeTela();
@@ -129,7 +131,7 @@ namespace MeusPedidos
             else if(ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
             {
 
-                //EFETUAR MICRO ANIMAÇÂO DENTROD E UM DIALOG PARA INFORMAR PEDIDO FINALIZADO
+                //EFETUAR MICRO ANIMAÇÂO DENTRO DE UM DIALOG PARA INFORMAR PEDIDO FINALIZADO
 
             }
 
@@ -198,7 +200,8 @@ namespace MeusPedidos
             {
                 listaProdutosSelecionados.RemoveAt(produto.quantidade);
             }
-            
+
+            atualizarTextoBotaoConfirmar();
             visibilidadeBotaoConfirmar();
 
         }
@@ -293,7 +296,22 @@ namespace MeusPedidos
                             produto.descricao = obj["description"].Value<string>();
                             produto.urlPhoto = obj["photo"].Value<string>();
                             produto.preco = obj["price"].Value<int>();
-                           // produto.categoria = obj["category_id"].Value<int>();
+
+                            if (obj["category_id"].Type != JTokenType.Null)
+                            {
+                                produto.categoria = obj["category_id"].Value<int>();
+                            }
+
+                            for(int position = 0; position < listaPromocoes.Count; position++)
+                            {
+
+                                Promocao promocao = listaPromocoes[position];
+                                
+                                if (produto.categoria == promocao.categoria)
+                                {
+                                    produto.promocao = promocao;
+                                }
+                            }
                             
                             listaProdutos.Add(produto);
                             
@@ -305,5 +323,68 @@ namespace MeusPedidos
                 }
             }
         }
+
+        private void consumirDadosListarPromocoes()
+        {
+
+            var request = HttpWebRequest.Create(string.Format(@"https://pastebin.com/raw/R9cJFBtG"));
+            request.ContentType = "application/json";
+            request.Method = "GET";
+
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                if (response.StatusCode != HttpStatusCode.OK)
+                    Console.Out.WriteLine("Problemas no retorno da chamada listarPromocoes", response.StatusCode);
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var content = reader.ReadToEnd();
+
+                    if (string.IsNullOrWhiteSpace(content))
+                    {
+                        Console.Out.WriteLine("Json vazio no retorno da chamada listarPromocoes");
+                    }
+                    else
+                    {
+                        
+                        JArray jsonArrayPromocoes = JArray.Parse(content);
+                        listaPromocoes = new List<Promocao>();
+
+                        for (int i = 0; i < jsonArrayPromocoes.Count; i++)
+                        {
+                            var promocao = new Promocao();
+                            var obj = jsonArrayPromocoes[i];
+
+                            promocao.nome = obj["name"].Value<string>();
+                            promocao.categoria = obj["category_id"].Value<int>();
+                            JArray arrayPoliticas = obj["policies"].Value<JArray>();
+                            
+                            List<Politicas> listaPoliticas = new List<Politicas>();
+
+                            for (int position = 0; position < arrayPoliticas.Count; position++)
+                            {
+
+                                Politicas politica = new Politicas();
+
+                                var objPromocoes = arrayPoliticas[position];
+                               
+                                politica.quantidadeMinima = objPromocoes["min"].Value<int>();
+                                politica.desconto = objPromocoes["discount"].Value<int>();
+
+                                listaPoliticas.Add(politica);
+                                
+                            }
+
+                            promocao.politicas = listaPoliticas;
+                            listaPromocoes.Add(promocao);
+                     
+                        }
+
+                        consumirDadosListarProdutos();
+
+                    }
+                }
+            }
+        }
+
     }
 }

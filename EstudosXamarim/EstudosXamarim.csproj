@@ -59,6 +59,7 @@
     <Compile Include="Adapter\AdapterProduto.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Model\Promocao.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
