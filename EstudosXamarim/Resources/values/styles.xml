@@ -15,11 +15,21 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="botao_estiloso" >
+    <style name="botao_confirmar" >
       <item name="android:textColor" >#212121</item>
       <item name="android:gravity" >center</item>
     </style>
 
+    <style name="botao_adicionar_produto" >
+      <item name="android:textColor" >#FFFF8B</item>
+      <item name="android:gravity" >center</item>
+    </style>
+
+    <style name="botao_remover_produto" >
+      <item name="android:textColor" >#FFFF8B</item>
+      <item name="android:gravity" >center</item>
+    </style>
+  
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

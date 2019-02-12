@@ -70,6 +70,8 @@
 			<Button
 				android:id="@+id/bt_remover_produto"
 				android:text="-"
+				style="@style/botao_remover_produto"
+				android:background="@layout/botao_remover_produto"
 				android:layout_height="match_parent"
 				android:layout_width="0dp"
 				android:layout_weight="1"/>
@@ -77,6 +79,8 @@
 			<Button
 				android:id="@+id/bt_adicionar_produto"
 				android:text="+"
+				style="@style/botao_adicionar_produto"
+				android:background="@layout/botao_adicionar_produto"
 				android:layout_height="match_parent"
 				android:layout_width="0dp"
 				android:layout_weight="1"/>

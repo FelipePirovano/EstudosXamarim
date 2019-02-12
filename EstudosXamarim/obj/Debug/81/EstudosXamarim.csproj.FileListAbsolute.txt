@@ -98,4 +98,6 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\EstudosXamarim.csprojAss
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\confirmarpedido.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\itemlistaprodutoselecionado.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\bordainferior.xml
-C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botaoestiloso.xml
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_confirmar.xml
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_adicionar_produto.xml
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_remover_produto.xml

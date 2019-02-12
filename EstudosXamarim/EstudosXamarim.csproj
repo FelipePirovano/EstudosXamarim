@@ -129,7 +129,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\botaoEstiloso.axml">
+    <AndroidResource Include="Resources\layout\botao_confirmar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\botao_adicionar_produto.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\botao_remover_produto.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
