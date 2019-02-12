@@ -44,14 +44,14 @@ namespace MeusPedidos.Adapter
             holder.image.SetImageBitmap(GetImageBitmapFromUrl(items[position].urlPhoto));
 
             if (items[position].desconto > 0) {
-                holder.promocao.Visibility = ViewStates.Visible;
+                holder.campoDesconto.Visibility = ViewStates.Visible;
             }
             else
             {
-                holder.promocao.Visibility = ViewStates.Invisible;
+                holder.campoDesconto.Visibility = ViewStates.Invisible;
             }
 
-            holder.promocao.Text = items[position].desconto + "%";
+            holder.desconto.Text = items[position].desconto + "%";
             
             holder.botaoAdicionar.SetOnClickListener(this);
             holder.botaoAdicionar.Tag = position;
@@ -128,7 +128,10 @@ namespace MeusPedidos.Adapter
         public ImageView image { get; set; }
         public Button botaoAdicionar { get; set; }
         public Button botaoRemover { get; set; }
-        public TextView promocao { get; set; }
+        public LinearLayout campoDesconto { get; set; }
+        public TextView desconto { get; set; }
+        //public TextView promocao { get; set; }
+       
 
         public Adapter1ViewHolder(View itemView) : base(itemView)
         {
@@ -139,7 +142,9 @@ namespace MeusPedidos.Adapter
             botaoAdicionar = itemView.FindViewById<Button>(Resource.Id.bt_adicionar_produto);
             botaoRemover = itemView.FindViewById<Button>(Resource.Id.bt_remover_produto);
             quantidade = itemView.FindViewById<TextView>(Resource.Id.tv_quantidade_produtos);
-            promocao = itemView.FindViewById<TextView>(Resource.Id.tv_item_promocao);
+            campoDesconto = itemView.FindViewById<LinearLayout>(Resource.Id.ic_item_desconto);
+            desconto = itemView.FindViewById<TextView>(Resource.Id.tv_desconto);
+            //promocao = itemView.FindViewById<TextView>(Resource.Id.tv_item_promocao);
 
         }
     }

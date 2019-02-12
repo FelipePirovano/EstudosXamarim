@@ -101,3 +101,5 @@ C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\bordainferior
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_confirmar.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_adicionar_produto.xml
 C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\botao_remover_produto.xml
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\layout\campodesconto.xml
+C:\workspace\EstudosXamarim\EstudosXamarim\obj\Debug\81\res\drawable\ic_action_arrow_downward.png
