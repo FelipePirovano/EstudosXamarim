@@ -19,12 +19,12 @@ namespace MeusPedidos.Model
         public string nome { get; set; }
         public string descricao { get; set; }
         public string urlPhoto { get; set; }
-        public int preco { get; set; }
+        public float preco { get; set; }
         public int categoria { get; set; }
         public int quantidade { get; set; }
         public Promocao promocao { get; set; }
         public int desconto { get; set; }
-        public int precoFixo { get; set; }
+        public float precoFixo { get; set; }
         
         private int ultimaUnidadeDescontoAplicada { get; set; }
         private int ultimoDescontoAplicado { get; set; }
@@ -45,8 +45,8 @@ namespace MeusPedidos.Model
                         ultimoDescontoAplicado = desconto;
                         desconto = politicas.desconto;
                         
-                        int valorDesconto = precoFixo * desconto / 100;
-                        int valorDescontado = preco - valorDesconto;
+                        float valorDesconto = precoFixo * desconto / 100;
+                        float valorDescontado = preco - valorDesconto;
 
                         preco = valorDescontado;
 
@@ -62,14 +62,14 @@ namespace MeusPedidos.Model
                             {
                                 desconto = ultimoDescontoAplicado;
 
-                                int precoAnterior = precoFixo * desconto / 100;
+                                float precoAnterior = precoFixo * desconto / 100;
                                 preco = precoFixo - precoAnterior;
                                 return;
                             }
                             
                         }
 
-                        int descontoRules = precoFixo * desconto / 100;
+                        float descontoRules = precoFixo * desconto / 100;
                         preco = precoFixo - descontoRules;
                         
                     }else if(quantidade == 0)

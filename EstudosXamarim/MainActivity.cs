@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Xml.Serialization;
@@ -39,7 +40,7 @@ namespace MeusPedidos
         LayoutInflater inflater;
         TextView tv_quantidade_itens_selecionados;
         TextView tv_valor_total_itens_selecionados;
-        int valorTotalPedidos;
+        float valorTotalPedidos;
         int quantidadeTotalProdutos;
         int SOLICITANDO_PEDIDO = 0;
         int CONFIRMAAR_PEDIDO = 1;
@@ -175,7 +176,7 @@ namespace MeusPedidos
 
         }
 
-        public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, int preco, int categoria, int quantidade)
+        public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, float preco, int categoria, int quantidade)
         {
 
             Produto produto = new Produto();
@@ -206,7 +207,7 @@ namespace MeusPedidos
 
         }
 
-        public void removerProduto(int id, string nome, string descricao, string urlPhoto, int preco, int categoria, int quantidade)
+        public void removerProduto(int id, string nome, string descricao, string urlPhoto, float preco, int categoria, int quantidade)
         {
 
             Produto produto = new Produto();
@@ -284,7 +285,9 @@ namespace MeusPedidos
         private void atualizarTextoBotaoConfirmar()
         {
 
-            botaoConfirmarPedido.Text = "COMPRAR > R$" + valorTotalPedidos.ToString();
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ",";
+            botaoConfirmarPedido.Text = "COMPRAR > R$" +  valorTotalPedidos.ToString("##.##", nfi);
 
         }
 
@@ -353,8 +356,8 @@ namespace MeusPedidos
                             produto.nome = obj["name"].Value<string>();
                             produto.descricao = obj["description"].Value<string>();
                             produto.urlPhoto = obj["photo"].Value<string>();
-                            produto.preco = obj["price"].Value<int>();
-                            produto.precoFixo = obj["price"].Value<int>();
+                            produto.preco = obj["price"].Value<float>();
+                            produto.precoFixo = obj["price"].Value<float>();
 
                             if (obj["category_id"].Type != JTokenType.Null)
                             {
