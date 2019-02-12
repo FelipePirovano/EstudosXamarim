@@ -2366,9 +2366,6 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F020026
-			public const int action_settings = 2130837542;
-			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
 			
@@ -2746,6 +2743,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F0C0083
 			public const int title_template = 2131492995;
+			
+			// aapt resource value: 0x7F020026
+			public const int todas_categorias = 2130837542;
 			
 			// aapt resource value: 0x7F020003
 			public const int toolbar = 2130837507;

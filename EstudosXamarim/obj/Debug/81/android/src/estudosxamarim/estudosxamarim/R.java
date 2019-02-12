@@ -2971,7 +2971,6 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f080079;
         public static final int action_mode_bar_stub=0x7f080078;
         public static final int action_mode_close_button=0x7f08005c;
-        public static final int action_settings=0x7f0800c7;
         public static final int action_text=0x7f0800b3;
         public static final int actions=0x7f0800c1;
         public static final int activity_chooser_view_content=0x7f08005d;
@@ -3122,6 +3121,7 @@ containing a value of this type.
         public static final int title=0x7f08001c;
         public static final int titleDividerNoCustom=0x7f080071;
         public static final int title_template=0x7f08006f;
+        public static final int todas_categorias=0x7f0800c7;
         public static final int toolbar=0x7f08008c;
         public static final int top=0x7f08003e;
         public static final int topPanel=0x7f08006e;

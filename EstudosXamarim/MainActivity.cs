@@ -28,6 +28,7 @@ namespace MeusPedidos
         ProdutoAdapter produtoAdapter;
         List<Produto> listaProdutos;
         List<Produto> listaProdutosSelecionados;
+        List<Produto> listaProdutosFiltrada;
         Android.Support.V7.Widget.Toolbar toolbar;
         Android.Widget.ProgressBar progressBar;
         Button botaoConfirmarPedido;
@@ -45,6 +46,7 @@ namespace MeusPedidos
         int ESTADO_TELA_ATIVO = 0;
         IMenuItem menu1;
         List<Promocao> listaPromocoes;
+        List<Categoria> listaCategorias;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -81,22 +83,28 @@ namespace MeusPedidos
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            menu1 = menu.GetItem(0);
+
+            consumirDadosFiltroPorCategoria(menu);
+
             return true;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-
-            if (id == Resource.Id.action_settings)
-            {
-                return true;
-            }
-            else if (id == Android.Resource.Id.Home)
+            
+            if (id == Android.Resource.Id.Home)
             {
                 visibilidadeTela(SOLICITANDO_PEDIDO);
                 rezetarLayoutConfirmarPedido();
+            }else if(id == Resource.Id.todas_categorias)
+            {
+                produtoAdapter = new ProdutoAdapter(listaProdutos);
+                listaReciclavelProdutos.SetAdapter(produtoAdapter);
+            }
+            else
+            {
+                filtrarItensListaConformeCategoria(id);
             }
 
             return base.OnOptionsItemSelected(item);
@@ -285,6 +293,32 @@ namespace MeusPedidos
             ll_recebe_produtos.RemoveAllViews();
         }
 
+        private void filtrarItensListaConformeCategoria(int id)
+        {
+
+            if(listaProdutosFiltrada.Count > 0)
+            {
+                listaProdutosFiltrada.Clear();
+            }
+            
+            for(int i = 0; i < listaProdutos.Count; i++)
+            {
+
+                Produto produto = listaProdutos[i];
+                
+                if (listaCategorias[id - 1].id  == produto.categoria)
+                {
+
+                    listaProdutosFiltrada.Add(produto);
+
+                }
+            }
+
+            ProdutoAdapter adapterFiltrado = new ProdutoAdapter(listaProdutosFiltrada);
+            listaReciclavelProdutos.SetAdapter(adapterFiltrado);
+            
+        }
+
         private void consumirDadosListarProdutos()
         {
 
@@ -406,6 +440,50 @@ namespace MeusPedidos
 
                         consumirDadosListarProdutos();
 
+                    }
+                }
+            }
+        }
+
+        private void consumirDadosFiltroPorCategoria(IMenu menu)
+        {
+
+            var request = HttpWebRequest.Create(string.Format(@"http://pastebin.com/raw/YNR2rsWe"));
+            request.ContentType = "application/json";
+            request.Method = "GET";
+
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                if (response.StatusCode != HttpStatusCode.OK)
+                    Console.Out.WriteLine("Problemas no retorno da chamada FiltroPorCategoria", response.StatusCode);
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var content = reader.ReadToEnd();
+
+                    if (string.IsNullOrWhiteSpace(content))
+                    {
+                        Console.Out.WriteLine("Json vazio no retorno da chamada FiltroPorCategoria");
+                    }
+                    else
+                    {
+
+                        JArray jsonArrayCategoria = JArray.Parse(content);
+                        listaCategorias = new List<Categoria>();
+                        listaProdutosFiltrada = new List<Produto>();
+
+                        for (int i = 0; i < jsonArrayCategoria.Count; i++)
+                        {
+                            var obj = jsonArrayCategoria[i];
+                            Categoria categoria = new Categoria();
+
+                            categoria.nome = obj["name"].Value<string>();
+                            categoria.id = obj["id"].Value<int>();
+
+                            listaCategorias.Add(categoria);
+
+                            menu.Add(0, categoria.id, 0, categoria.nome);
+
+                        }
                     }
                 }
             }
