@@ -45,7 +45,6 @@ namespace MeusPedidos
         int SOLICITANDO_PEDIDO = 0;
         int CONFIRMAAR_PEDIDO = 1;
         int ESTADO_TELA_ATIVO = 0;
-        IMenuItem menu1;
         List<Promocao> listaPromocoes;
         List<Categoria> listaCategorias;
 
@@ -261,7 +260,6 @@ namespace MeusPedidos
                 ll_resumo_itens_selecionados.Visibility = ViewStates.Gone;
                 toolbar.SetTitle(Resource.String.titulo_toolbar);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
-                menu1.SetVisible(true);
                 SupportActionBar.SetDisplayHomeAsUpEnabled(false);
                 atualizarTextoBotaoConfirmar();
             }
@@ -271,7 +269,6 @@ namespace MeusPedidos
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
                 ll_resumo_itens_selecionados.Visibility = ViewStates.Visible;
                 toolbar.SetTitle(Resource.String.titulo_toolbar_confirmar);
-                menu1.SetVisible(false);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
                 botaoConfirmarPedido.Text = "FINALIZAR A COMPRA";

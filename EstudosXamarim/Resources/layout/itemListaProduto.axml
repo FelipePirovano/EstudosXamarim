@@ -49,6 +49,25 @@
 		android:layout_height="match_parent"
 		android:layout_weight="2">
 		
+		<ImageView
+			android:id="@+id/iv_favorito_nok"
+			android:layout_above="@+id/tv_quantidade_produtos"
+			android:src="@drawable/ic_star_nok"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:layout_width="25dp"
+			android:layout_height="25dp"/>
+
+		<ImageView
+			android:id="@+id/iv_favorito_ok"
+			android:layout_above="@+id/tv_quantidade_produtos"
+			android:src="@drawable/ic_star_ok"
+			android:visibility="gone"
+			android:layout_alignParentRight="true"
+			android:layout_alignParentTop="true"
+			android:layout_width="25dp"
+			android:layout_height="25dp"/>
+
 		<TextView
 			android:id="@+id/tv_quantidade_produtos"
 			android:text="0 UN"

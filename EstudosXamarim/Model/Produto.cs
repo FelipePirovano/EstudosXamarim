@@ -25,6 +25,7 @@ namespace MeusPedidos.Model
         public Promocao promocao { get; set; }
         public int desconto { get; set; }
         public float precoFixo { get; set; }
+        public bool favorito { get; set; }
         
         private int ultimaUnidadeDescontoAplicada { get; set; }
         private int ultimoDescontoAplicado { get; set; }

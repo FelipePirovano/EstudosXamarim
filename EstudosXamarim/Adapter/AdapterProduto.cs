@@ -48,7 +48,17 @@ namespace MeusPedidos.Adapter
             }
             else
             {
-                holder.campoDesconto.Visibility = ViewStates.Invisible;
+            }
+
+            if (items[position].favorito)
+            {
+                holder.favoritoOk.Visibility = ViewStates.Visible;
+                holder.favoritoNaoOk.Visibility = ViewStates.Gone;
+            }
+            else
+            {
+                holder.favoritoOk.Visibility = ViewStates.Gone;
+                holder.favoritoNaoOk.Visibility = ViewStates.Visible;
             }
 
             holder.desconto.Text = items[position].desconto + "%";
@@ -58,6 +68,12 @@ namespace MeusPedidos.Adapter
             
             holder.botaoRemover.SetOnClickListener(this);
             holder.botaoRemover.Tag = position;
+
+            holder.favoritoOk.SetOnClickListener(this);
+            holder.favoritoOk.Tag = position;
+
+            holder.favoritoNaoOk.SetOnClickListener(this);
+            holder.favoritoNaoOk.Tag = position;
             
         }
         
@@ -66,39 +82,64 @@ namespace MeusPedidos.Adapter
         public void OnClick(View v)
         {
             if (v.Id == Resource.Id.bt_adicionar_produto) {
-               
+
                 int posicao = (int)v.Tag;
 
                 Produto produto = items[posicao];
                 produto.quantidade++;
-                
+
                 produto.gerarDesconto(false);
-   
+
                 NotifyDataSetChanged();
 
                 NotifyItemChanged(posicao);
-                
-                ((MainActivity)context).adicionarProduto(produto.id,produto.nome,produto.descricao,produto.urlPhoto,produto.preco,produto.categoria,produto.quantidade);
-                
+
+                ((MainActivity)context).adicionarProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
+
             }
-            else if(v.Id == Resource.Id.bt_remover_produto)
+            else if (v.Id == Resource.Id.bt_remover_produto)
             {
                 int posicao = (int)v.Tag;
 
                 if (items[posicao].quantidade == 0) {
                     return;
                 }
-                
+
                 Produto produto = items[posicao];
                 produto.quantidade--;
-   
+
                 produto.retirarDesconto();
-                
+
                 NotifyDataSetChanged();
+
+                NotifyItemChanged(posicao);
 
                 ((MainActivity)context).removerProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
 
             }
+            else if (v.Id == Resource.Id.iv_favorito_ok)
+            {
+
+                int posicao = (int)v.Tag;
+
+                Produto produto = items[posicao];
+                produto.favorito = false;
+
+                NotifyItemChanged(posicao);
+            }
+
+            else if (v.Id == Resource.Id.iv_favorito_nok)
+            {
+               
+                int posicao = (int)v.Tag;
+
+                Produto produto = items[posicao];
+                produto.favorito = true;
+
+                NotifyItemChanged(posicao);
+
+            }
+
         }
 
         private Bitmap GetImageBitmapFromUrl(string url)
@@ -130,8 +171,10 @@ namespace MeusPedidos.Adapter
         public Button botaoRemover { get; set; }
         public LinearLayout campoDesconto { get; set; }
         public TextView desconto { get; set; }
-        //public TextView promocao { get; set; }
-       
+        public ImageView favoritoNaoOk { get; set; }
+        public ImageView favoritoOk { get; set; }
+
+
 
         public Adapter1ViewHolder(View itemView) : base(itemView)
         {
@@ -144,7 +187,8 @@ namespace MeusPedidos.Adapter
             quantidade = itemView.FindViewById<TextView>(Resource.Id.tv_quantidade_produtos);
             campoDesconto = itemView.FindViewById<LinearLayout>(Resource.Id.ic_item_desconto);
             desconto = itemView.FindViewById<TextView>(Resource.Id.tv_desconto);
-            //promocao = itemView.FindViewById<TextView>(Resource.Id.tv_item_promocao);
+            favoritoNaoOk = itemView.FindViewById<ImageView>(Resource.Id.iv_favorito_nok);
+            favoritoOk = itemView.FindViewById<ImageView>(Resource.Id.iv_favorito_ok);
 
         }
     }

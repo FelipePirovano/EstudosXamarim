@@ -2254,6 +2254,12 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F010002
 			public const int ic_action_arrow_downward = 2130771970;
 			
+			// aapt resource value: 0x7F010003
+			public const int ic_star_nok = 2130771971;
+			
+			// aapt resource value: 0x7F010004
+			public const int ic_star_ok = 2130771972;
+			
 			// aapt resource value: 0x7F09005C
 			public const int navigation_empty_icon = 2131296348;
 			
@@ -2390,14 +2396,14 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C001A
 			public const int bottom = 2131492890;
 			
-			// aapt resource value: 0x7F020021
-			public const int bt_adicionar_produto = 2130837537;
+			// aapt resource value: 0x7F020023
+			public const int bt_adicionar_produto = 2130837539;
 			
 			// aapt resource value: 0x7F020008
 			public const int bt_confirmar_pedido = 2130837512;
 			
-			// aapt resource value: 0x7F020020
-			public const int bt_remover_produto = 2130837536;
+			// aapt resource value: 0x7F020022
+			public const int bt_remover_produto = 2130837538;
 			
 			// aapt resource value: 0x7F0C001B
 			public const int buttonPanel = 2131492891;
@@ -2504,6 +2510,12 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C003B
 			public const int item_touch_helper_previous_elevation = 2131492923;
 			
+			// aapt resource value: 0x7F020018
+			public const int iv_favorito_nok = 2130837528;
+			
+			// aapt resource value: 0x7F020019
+			public const int iv_favorito_ok = 2130837529;
+			
 			// aapt resource value: 0x7F020014
 			public const int iv_item_image = 2130837524;
 			
@@ -2528,8 +2540,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0041
 			public const int list_item = 2131492929;
 			
-			// aapt resource value: 0x7F020019
-			public const int ll_adicionar_remover_produto = 2130837529;
+			// aapt resource value: 0x7F020021
+			public const int ll_adicionar_remover_produto = 2130837537;
 			
 			// aapt resource value: 0x7F020004
 			public const int ll_confirmar_pedido = 2130837508;
@@ -2744,8 +2756,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0083
 			public const int title_template = 2131492995;
 			
-			// aapt resource value: 0x7F020026
-			public const int todas_categorias = 2130837542;
+			// aapt resource value: 0x7F020028
+			public const int todas_categorias = 2130837544;
 			
 			// aapt resource value: 0x7F020003
 			public const int toolbar = 2130837507;
@@ -2780,26 +2792,26 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F020015
 			public const int tv_item_nome = 2130837525;
 			
-			// aapt resource value: 0x7F020022
-			public const int tv_item_nome_selecionado = 2130837538;
+			// aapt resource value: 0x7F020024
+			public const int tv_item_nome_selecionado = 2130837540;
 			
 			// aapt resource value: 0x7F020017
 			public const int tv_item_price = 2130837527;
 			
-			// aapt resource value: 0x7F020024
-			public const int tv_item_promocao_selecionado = 2130837540;
-			
-			// aapt resource value: 0x7F020023
-			public const int tv_item_quantidade_selecionado = 2130837539;
+			// aapt resource value: 0x7F020026
+			public const int tv_item_promocao_selecionado = 2130837542;
 			
 			// aapt resource value: 0x7F020025
-			public const int tv_item_valor_selecionado = 2130837541;
+			public const int tv_item_quantidade_selecionado = 2130837541;
+			
+			// aapt resource value: 0x7F020027
+			public const int tv_item_valor_selecionado = 2130837543;
 			
 			// aapt resource value: 0x7F020006
 			public const int tv_quantidade_itens_selecionados = 2130837510;
 			
-			// aapt resource value: 0x7F020018
-			public const int tv_quantidade_produtos = 2130837528;
+			// aapt resource value: 0x7F020020
+			public const int tv_quantidade_produtos = 2130837536;
 			
 			// aapt resource value: 0x7F020007
 			public const int tv_valor_total_itens_selecionados = 2130837511;
