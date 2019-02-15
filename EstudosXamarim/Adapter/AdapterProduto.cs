@@ -7,7 +7,6 @@ using MeusPedidos.Model;
 using System.Collections.Generic;
 using EstudosXamarim;
 using Android.Content;
-using EstudosXamarim.Model;
 using Android.Graphics;
 using System.Net;
 using System.Globalization;
@@ -39,8 +38,7 @@ namespace MeusPedidos.Adapter
         {
             var holder = viewHolder as Adapter1ViewHolder;
 
-            holder.nome.Text = items[position].nome;
-            
+            holder.nome.Text = items[position].nome;         
 
             holder.price.Text = formatarValor(items[position].preco);
             holder.quantidade.Text = items[position].quantidade + " UN";
@@ -98,7 +96,7 @@ namespace MeusPedidos.Adapter
 
                 NotifyItemChanged(posicao);
 
-                ((MainActivity)context).adicionarProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
+                ((MainActivity)context).adicionarProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto,produto.desconto, produto.preco, produto.categoria, produto.quantidade);
 
             }
             else if (v.Id == Resource.Id.bt_remover_produto)
@@ -118,7 +116,7 @@ namespace MeusPedidos.Adapter
 
                 NotifyItemChanged(posicao);
 
-                ((MainActivity)context).removerProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.preco, produto.categoria, produto.quantidade);
+                ((MainActivity)context).removerProduto(produto.id, produto.nome, produto.descricao, produto.urlPhoto, produto.desconto, produto.preco, produto.categoria, produto.quantidade);
 
             }
             else if (v.Id == Resource.Id.iv_favorito_ok)

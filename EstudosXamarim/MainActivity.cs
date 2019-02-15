@@ -6,6 +6,7 @@ using System.Net;
 using System.Xml.Serialization;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.V7.Widget;
@@ -77,6 +78,8 @@ namespace MeusPedidos
                 acaoBotaoConformeTela();
 
             };
+
+       
 
         }
 
@@ -157,12 +160,13 @@ namespace MeusPedidos
  
             alert.SetPositiveButton("Tudo certo!", (senderAlert, args) => {
                 
-                rezetarLayoutConfirmarPedido();
-                listaProdutosSelecionados.Clear();
                 valorTotalPedidos = 0;
+                quantidadeTotalProdutos = 0;
+                listaProdutos.Clear();
+                listaProdutosSelecionados.Clear();
+                rezetarLayoutConfirmarPedido();
                 visibilidadeTela(SOLICITANDO_PEDIDO);
-
-                //PASSAR PELO METODO DE CACHE PARA RESETAR LISTA
+                consumirDadosListarProdutos();
 
             });
 
@@ -189,10 +193,20 @@ namespace MeusPedidos
                 TextView tv_item_nome_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_nome_selecionado);
                 TextView tv_item_quantidade_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_quantidade_selecionado);
                 TextView tv_item_valor_selecionado = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_item_valor_selecionado);
-
+                ImageView iv_item_imagem_selecionado = itemListaProdutoSelecionado.FindViewById<ImageView>(Resource.Id.iv_item_imagem_selecionado);
+                LinearLayout ic_desconto = itemListaProdutoSelecionado.FindViewById<LinearLayout>(Resource.Id.ic_desconto);
+                TextView tv_desconto = itemListaProdutoSelecionado.FindViewById<TextView>(Resource.Id.tv_desconto);
+                
+                iv_item_imagem_selecionado.SetImageBitmap(GetImageBitmapFromUrl(produto.urlPhoto));
                 tv_item_nome_selecionado.Text = produto.nome;
                 tv_item_quantidade_selecionado.Text = produto.quantidade + " UN";
                 tv_item_valor_selecionado.Text = "R$ " + produto.preco;
+                
+                if (produto.desconto > 0)
+                {
+                    ic_desconto.Visibility = ViewStates.Visible;
+                    tv_desconto.Text = produto.desconto + "%";
+                }
 
                 ll_recebe_produtos.AddView(itemListaProdutoSelecionado);
 
@@ -201,8 +215,24 @@ namespace MeusPedidos
             visibilidadeTela(CONFIRMAAR_PEDIDO);
 
         }
+        
+        private Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
 
-        public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, float preco, int categoria, int quantidade)
+            using (var webClient = new WebClient())
+            {
+                var imageBytes = webClient.DownloadData(url);
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                }
+            }
+
+            return imageBitmap;
+        }
+        
+        public void adicionarProduto(int id, string nome, string descricao, string urlPhoto, int desconto , float preco, int categoria, int quantidade)
         {
 
             Produto produto = new Produto();
@@ -211,6 +241,7 @@ namespace MeusPedidos
             produto.descricao = descricao;
             produto.urlPhoto = urlPhoto;
             produto.preco = preco;
+            produto.desconto = desconto;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
 
@@ -232,7 +263,7 @@ namespace MeusPedidos
 
         }
 
-        public void removerProduto(int id, string nome, string descricao, string urlPhoto, float preco, int categoria, int quantidade)
+        public void removerProduto(int id, string nome, string descricao, string urlPhoto, int desconto, float preco, int categoria, int quantidade)
         {
 
             Produto produto = new Produto();
@@ -241,6 +272,7 @@ namespace MeusPedidos
             produto.descricao = descricao;
             produto.urlPhoto = urlPhoto;
             produto.preco = preco;
+            produto.desconto = desconto;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
             

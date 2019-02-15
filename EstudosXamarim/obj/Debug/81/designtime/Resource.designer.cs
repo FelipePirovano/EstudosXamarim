@@ -2495,6 +2495,9 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F020011
 			public const int ic_confirmar_pedido = 2130837521;
 			
+			// aapt resource value: 0x7F020027
+			public const int ic_desconto = 2130837543;
+			
 			// aapt resource value: 0x7F020016
 			public const int ic_item_desconto = 2130837526;
 			
@@ -2518,6 +2521,9 @@ namespace EstudosXamarim
 			
 			// aapt resource value: 0x7F020014
 			public const int iv_item_image = 2130837524;
+			
+			// aapt resource value: 0x7F020024
+			public const int iv_item_imagem_selecionado = 2130837540;
 			
 			// aapt resource value: 0x7F0C003C
 			public const int largeLabel = 2131492924;
@@ -2756,8 +2762,8 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F0C0083
 			public const int title_template = 2131492995;
 			
-			// aapt resource value: 0x7F020028
-			public const int todas_categorias = 2130837544;
+			// aapt resource value: 0x7F020029
+			public const int todas_categorias = 2130837545;
 			
 			// aapt resource value: 0x7F020003
 			public const int toolbar = 2130837507;
@@ -2792,20 +2798,17 @@ namespace EstudosXamarim
 			// aapt resource value: 0x7F020015
 			public const int tv_item_nome = 2130837525;
 			
-			// aapt resource value: 0x7F020024
-			public const int tv_item_nome_selecionado = 2130837540;
+			// aapt resource value: 0x7F020025
+			public const int tv_item_nome_selecionado = 2130837541;
 			
 			// aapt resource value: 0x7F020017
 			public const int tv_item_price = 2130837527;
 			
 			// aapt resource value: 0x7F020026
-			public const int tv_item_promocao_selecionado = 2130837542;
+			public const int tv_item_quantidade_selecionado = 2130837542;
 			
-			// aapt resource value: 0x7F020025
-			public const int tv_item_quantidade_selecionado = 2130837541;
-			
-			// aapt resource value: 0x7F020027
-			public const int tv_item_valor_selecionado = 2130837543;
+			// aapt resource value: 0x7F020028
+			public const int tv_item_valor_selecionado = 2130837544;
 			
 			// aapt resource value: 0x7F020006
 			public const int tv_quantidade_itens_selecionados = 2130837510;

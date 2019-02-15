@@ -6,19 +6,22 @@
     android:layout_height="wrap_content">
 
 	<ImageView
-		android:src="@mipmap/ic_launcher"
-		android:layout_width="80dp"
-		android:layout_height="80dp"/>
+		android:id="@+id/iv_item_imagem_selecionado"
+		android:layout_width="0dp"
+		android:layout_height="120dp"
+		android:layout_weight="1"/>
 
 	<RelativeLayout
 		android:layout_marginLeft="10dp"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1.5">
 
 		<TextView
 			android:id="@+id/tv_item_nome_selecionado"
 			android:layout_alignParentTop="true"
-			android:textSize="16sp"
+			android:textSize="12sp"
+			android:textStyle="bold"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"/>
 
@@ -30,25 +33,25 @@
 	
 			<TextView
 				android:id="@+id/tv_item_quantidade_selecionado"
-				android:textSize="16sp"
+				android:textSize="12sp"
+				android:textColor="#d8d6d6"
+				android:gravity="bottom"
 				android:layout_width="0dp"
-				android:layout_height="wrap_content"
+				android:layout_height="match_parent"
 				android:layout_weight="1"/>
 
-			<TextView
-				android:id="@+id/tv_item_promocao_selecionado"
+			<include
+				android:id="@+id/ic_desconto"
 				android:visibility="invisible"
-				android:textSize="16sp"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"/>
+				layout="@layout/campodesconto"/>
 
 			<TextView
 				android:id="@+id/tv_item_valor_selecionado"
-				android:textSize="16sp"
+				android:textSize="12sp"
 				android:textAlignment="textEnd"
+				android:gravity="bottom"
 				android:layout_width="0dp"
-				android:layout_height="wrap_content"
+				android:layout_height="match_parent"
 				android:layout_weight="1"/>
 	
 		</LinearLayout>
