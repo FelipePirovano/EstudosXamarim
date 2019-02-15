@@ -136,20 +136,45 @@ namespace MeusPedidos
 
             if (ESTADO_TELA_ATIVO == SOLICITANDO_PEDIDO)
             {
-
                 if(listaProdutosSelecionados.Count > 0)
                 {
                     gerarLayoutConfirmarPedido();
-
                 }
             }
             else if (ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
             {
-
-                //EFETUAR MICRO ANIMAÇÂO DENTRO DE UM DIALOG PARA INFORMAR PEDIDO FINALIZADO
-
+                finalizarPedido();
             }
 
+        }
+
+        private void finalizarPedido()
+        {
+
+            Android.App.AlertDialog.Builder alert = new Android.App.AlertDialog.Builder(this);
+            alert.SetTitle("PEDIDO FINALIZADO!");
+            alert.SetMessage("Seu pedido está finalizado e pronto para ser confirmado, está tudo certo ?");
+ 
+            alert.SetPositiveButton("Tudo certo!", (senderAlert, args) => {
+                
+                rezetarLayoutConfirmarPedido();
+                listaProdutosSelecionados.Clear();
+                valorTotalPedidos = 0;
+                visibilidadeTela(SOLICITANDO_PEDIDO);
+
+                //PASSAR PELO METODO DE CACHE PARA RESETAR LISTA
+
+            });
+
+            alert.SetNegativeButton("Ainda não terminei.", (senderAlert, args) => {
+
+                alert.Dispose();
+
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+            
         }
 
         private void gerarLayoutConfirmarPedido()
@@ -197,7 +222,6 @@ namespace MeusPedidos
                 {
                     listaProdutosSelecionados.Remove(validarProduto);
                 }
-
             }
 
             listaProdutosSelecionados.Add(produto);
@@ -219,8 +243,7 @@ namespace MeusPedidos
             produto.preco = preco;
             produto.categoria = categoria;
             produto.quantidade = quantidade;
-
-
+            
             for (int i = 0; i < listaProdutosSelecionados.Count; i++)
             {
                 Produto validarProduto = listaProdutosSelecionados[i];
@@ -262,12 +285,14 @@ namespace MeusPedidos
 
         private void visibilidadeTela(int ESTADO_TELA)
         {
+            listaReciclavelProdutos.Visibility = ViewStates.Gone;
+            ic_confirmar_pedido.Visibility = ViewStates.Gone;
+            ll_resumo_itens_selecionados.Visibility = ViewStates.Gone;
+
 
             if (ESTADO_TELA == SOLICITANDO_PEDIDO)
             {
                 listaReciclavelProdutos.Visibility = ViewStates.Visible;
-                ic_confirmar_pedido.Visibility = ViewStates.Gone;
-                ll_resumo_itens_selecionados.Visibility = ViewStates.Gone;
                 toolbar.SetTitle(Resource.String.titulo_toolbar);
                 ESTADO_TELA_ATIVO = ESTADO_TELA;
                 SupportActionBar.SetDisplayHomeAsUpEnabled(false);
@@ -275,7 +300,6 @@ namespace MeusPedidos
             }
             else if (ESTADO_TELA == CONFIRMAAR_PEDIDO)
             {
-                listaReciclavelProdutos.Visibility = ViewStates.Gone;
                 ic_confirmar_pedido.Visibility = ViewStates.Visible;
                 ll_resumo_itens_selecionados.Visibility = ViewStates.Visible;
                 toolbar.SetTitle(Resource.String.titulo_toolbar_confirmar);

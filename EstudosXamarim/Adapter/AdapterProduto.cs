@@ -10,6 +10,7 @@ using Android.Content;
 using EstudosXamarim.Model;
 using Android.Graphics;
 using System.Net;
+using System.Globalization;
 
 namespace MeusPedidos.Adapter
 {
@@ -39,7 +40,9 @@ namespace MeusPedidos.Adapter
             var holder = viewHolder as Adapter1ViewHolder;
 
             holder.nome.Text = items[position].nome;
-            holder.price.Text = "R$"+ items[position].preco;
+            
+
+            holder.price.Text = formatarValor(items[position].preco);
             holder.quantidade.Text = items[position].quantidade + " UN";
             holder.image.SetImageBitmap(GetImageBitmapFromUrl(items[position].urlPhoto));
 
@@ -48,6 +51,7 @@ namespace MeusPedidos.Adapter
             }
             else
             {
+                holder.campoDesconto.Visibility = ViewStates.Gone;
             }
 
             if (items[position].favorito)
@@ -142,6 +146,13 @@ namespace MeusPedidos.Adapter
 
         }
 
+        private string formatarValor(float valor)
+        {
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ",";
+            return "R$" + valor.ToString("##.##", nfi);
+        }
+
         private Bitmap GetImageBitmapFromUrl(string url)
         {
             Bitmap imageBitmap = null;
@@ -173,8 +184,6 @@ namespace MeusPedidos.Adapter
         public TextView desconto { get; set; }
         public ImageView favoritoNaoOk { get; set; }
         public ImageView favoritoOk { get; set; }
-
-
 
         public Adapter1ViewHolder(View itemView) : base(itemView)
         {
