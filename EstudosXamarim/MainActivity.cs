@@ -97,6 +97,7 @@ namespace MeusPedidos
             {
                 visibilidadeTela(SOLICITANDO_PEDIDO);
                 rezetarLayoutConfirmarPedido();
+
             }else if(id == Resource.Id.todas_categorias)
             {
                 produtoAdapter = new ProdutoAdapter(listaProdutos);
@@ -136,10 +137,11 @@ namespace MeusPedidos
             if (ESTADO_TELA_ATIVO == SOLICITANDO_PEDIDO)
             {
 
-                gerarLayoutConfirmarPedido();
+                if(listaProdutosSelecionados.Count > 0)
+                {
+                    gerarLayoutConfirmarPedido();
 
-                //VALIDAÇÃO ITENS LISTA
-
+                }
             }
             else if (ESTADO_TELA_ATIVO == CONFIRMAAR_PEDIDO)
             {
@@ -225,7 +227,15 @@ namespace MeusPedidos
 
                 if (validarProduto.id == produto.id)
                 {
-                    validarProduto.quantidade -= 1;
+                    if(validarProduto.quantidade == 1)
+                    {
+                        listaProdutosSelecionados.Remove(validarProduto);
+                        validarProduto.quantidade -= 1;
+                    }
+                    else
+                    {
+                        validarProduto.quantidade -= 1;
+                    }
                 }
             }
 
